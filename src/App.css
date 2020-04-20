@@ -1,0 +1,141 @@
+body {
+  font-size: 2vh;
+}
+
+.friend-list {
+  padding: 6vh;
+  border-radius: 2vh;
+  background-color: dodgerblue;
+  color: white;
+  height: 90vh;
+}
+
+.list-group-item.active {
+  background-color: white;
+  color: dodgerblue;
+}
+
+.friend-list-item {
+  height: 6vh;
+  background-color: dodgerblue;
+  display:flex;
+  align-items:center;
+}
+
+.friend-list-item-enter {
+  opacity:0.01;
+  height: 0;
+}
+
+.friend-list-item-enter-active {
+  opacity: 1;
+  height: 6vh;
+  transition: opacity 300ms ease-in, height 300ms ease;
+}
+
+.friend-list-item-exit {
+  opacity: 1;
+  height: 6vh;
+}
+
+.friend-list-item-exit-active {
+  opacity:0.01;
+  height: 0;
+  transition: opacity 300ms ease-out, height 300ms ease;
+}
+
+.friend-panel-item-enter {
+  opacity: 0.01;
+  margin-top: -100px;
+}
+
+.friend-panel-item-enter-active {
+  opacity: 1;
+  margin-top: 0;
+  transition: opacity 300ms ease-in, margin 300ms ease-in;
+}
+
+.friend-panel-item-exit {
+  opacity: 1;
+  margin-top: 0;
+}
+
+.friend-panel-item-exit-active {
+  margin-top: -100px;
+  opacity: 0.01;
+  transition: opacity 300ms ease-out, margin 300ms ease-out;
+}
+
+.conversation {
+  border-radius: 2vh;
+  background-color: dodgerblue;
+  height: 90vh;
+  color: white;
+  padding: 6vh;
+  text-align: center;
+}
+
+.conversation-enter {
+  margin-left:100%;
+}
+
+.conversation-enter-active {
+  margin-left:0;
+  transition: margin .2s ease-in;
+}
+
+.conversation-exit {
+  display: none;
+}
+
+.main-panel-item {
+  visibility: visible;
+  transition: all 0.3s;
+  background-color: white;
+  width: 70%;
+}
+
+.main-panel-item.hidden{
+  /* display: none; */
+  overflow: hidden;
+  width: 0;
+}
+
+.controls {
+  position: relative;
+  z-index: 2;
+}
+
+.close-button {
+  position: absolute;
+  top:10px;
+  right:20px;
+}
+
+.close-button:hover {
+  cursor: pointer;
+  color: red;
+}
+
+.add-friend-form {
+  width: 100%;
+  height: 25vh;
+  display: flex;
+  align-items: center;
+}
+
+.chat-display {
+  width: 100%;
+  height: 50vh;
+  background-color: white;
+  border-radius:2vh;
+  margin: 3vh 0;
+}
+
+textarea {
+  width: 100%;
+  border-radius: 2vh;
+  padding: 2vh;
+  border: none;
+  resize: none;
+}
