@@ -8,6 +8,7 @@ import friendDataReducer from './friendData';
 import currentConversationReducer from './currentConversation';
 import requestDataReducer from './requestData';
 import showConversationReducer from './showConversation';
+import requestMessageReducer from './requestMessage';
 
 const rootReducer = combineReducers({
     nav: navReducer,
@@ -18,7 +19,8 @@ const rootReducer = combineReducers({
     friendData: friendDataReducer,
     currentConversation: currentConversationReducer,
     requestData: requestDataReducer,
-    showConversation: showConversationReducer
+    showConversation: showConversationReducer,
+    requestMessage: requestMessageReducer
 })
 
 export default rootReducer;

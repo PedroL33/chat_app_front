@@ -19,7 +19,9 @@ function ChatPanel(props) {
           <CSSTransition key={props.conversation} timeout={300} classNames="conversation">
 
             <div className="conversation position-relative overflow-hidden">
-                <span className="close-button" onClick={() => handleClick()}>x</span>
+                <span className="close-button" onClick={() => handleClick()}>
+                  <i class="far fa-times-circle"></i>
+                </span>
                 <div className="text-center">{props.conversation}</div>
                 <div className="chat-display">
 

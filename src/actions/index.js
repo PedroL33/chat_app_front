@@ -104,3 +104,15 @@ export const hideConversation = () => {
         type: "HIDE_CONVERSATION"
     }
 }
+
+export const showRequestMessage = () => {
+    return {
+        type: "SHOW_REQUEST_MESSAGE"
+    }
+}
+
+export const hideRequestMessage = () => {
+    return {
+        type: "HIDE_REQUEST_MESSAGE"
+    }
+}

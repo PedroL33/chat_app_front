@@ -50,7 +50,9 @@ function Friendslist() {
                     )} 
                 </TransitionGroup>
             </ul>
-            <button className= "mx-auto mt-5 w-50 btn btn-success" onClick={()=> dispatch(addFriends())}>+</button>
+            <button className= "mx-auto mt-5 w-50 btn btn-success" onClick={()=> dispatch(addFriends())}>
+                <i class="fas fa-user-plus"></i>
+            </button>
         </div>
     )
 }

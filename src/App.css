@@ -23,8 +23,9 @@ body {
   border-radius: 2vh;
 }
 
-.card-header, .add-input {
-  width: 8vw;
+.card-header, .add-input-container, .request-message-container {
+  width: 12vw;
+  font-size: 1.2vw;
 }
 
 .list-group-item.active {
@@ -39,42 +40,20 @@ body {
   align-items:center;
 }
 
-.friend-list-item-enter {
-  opacity:0.01;
-  /* height: 0; */
-}
-
-.friend-list-item-enter-active {
-  opacity: 1;
-  /* height: 6vh; */
-  transition: all 300ms ease-in;
-}
-
-.friend-list-item-exit {
-  opacity: 1;
-  /* height: 6vh; */
-}
-
-.friend-list-item-exit-active {
-  opacity:0.01;
-  /* height: 0; */
-  transition: all 300ms ease-out;
-}
-
-.friend-panel-item-enter {
+.friend-panel-item-enter, .request-panel-item-enter, .conversation-enter, .friend-list-item-enter {
   opacity: 0.01;
 }
 
-.friend-panel-item-enter-active {
+.friend-panel-item-enter-active, .request-panel-item-enter-active, .conversation-enter-active, .friend-list-item-enter-active {
   opacity: 1;
   transition: opacity 300ms ease-in;
 }
 
-.friend-panel-item-exit {
+.friend-panel-item-exit, .request-panel-item-exit, .conversation-exit, .friend-list-item-exit {
   opacity: 1;
 }
 
-.friend-panel-item-exit-active {
+.friend-panel-item-exit-active, .request-panel-item-exit-active, .conversation-exit-active, .friend-list-item-exit-active {
   opacity: 0.01;
   transition: opacity 300ms ease-out;
 }
@@ -89,51 +68,21 @@ body {
   text-align: center;
 }
 
-.conversation-enter {
-  opacity:0;
-}
-
-.conversation-enter-active {
-  opacity:1;
-  transition: opacity .2s ease-in;
-}
-
-.conversation-exit {
-  opacity:1;
-}
-
-.conversation-exit-active {
-  opacity: 0;
-  transition: opacity .2s ease;
-}
-
 .main-panel-item-enter {
   margin-left: -20vw;
-  /* width: 0; */
-  /* padding: 0; */
 }
 
 .main-panel-item-enter-active{
-  /* right: 0; */
   margin-left: 0;
-  /* padding: 6vh; */
-  /* width: 60%; */
   transition: all .3s;
 }
 
 .main-panel-item-exit {
-  /* right: 0; */
-  /* padding: 6vh; */
   margin-left: 0;
-  /* width: 60%; */
-
 }
 
 .main-panel-item-exit-active {
-  /* right: 60%; */
-  /* padding: 0; */
   margin-left: -20vw;
-  /* width: 0; */
   transition: all .3s;
 }
 
@@ -207,4 +156,21 @@ textarea {
 
 .form-label {
   font-size: 1vw;
+}
+
+.add-form-container {
+  height: 30%;
+  width: 12vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.request-message-container {
+  position:relative;
+  text-align: center;
+  padding: 2vh 0;
+  border-radius: 2vh;
+  background-color: rgb(124, 122, 122, .1);
 }
