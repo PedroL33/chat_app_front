@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { navInfo, navSignup, loginSuccess, setLoginErrors } from '../actions/index';
+import { navInfo, navSignup, loginSuccess, setLoginErrors, clearLoginErrors } from '../actions/index';
 
 function Login() {
     const [username, setUsername] = useState("")
@@ -25,6 +25,9 @@ function Login() {
             if(data.token) {
                 localStorage.setItem('token', data.token)
                 dispatch(loginSuccess());
+                dispatch(clearLoginErrors())
+                setUsername("")
+                setPassword("")
             }else {
                 dispatch(setLoginErrors(data))
             }
@@ -37,16 +40,24 @@ function Login() {
     function handleClick(e, action) {
         e.preventDefault();
         dispatch(action);
+        dispatch(clearLoginErrors())
+        setUsername("")
+        setPassword("")
     }
 
     return (
-        <div>
-            <input type="text" onChange={e => setUsername(e.target.value)} placeholder="Username"></input>
-            <input type="password" onChange={e => setPassword(e.target.value)} placeholder="Password"></input>
-            <span>{errors['error'] && errors['error']}</span>
-            <button onClick={e => login(e)}>Login</button>
-            <button onClick={e => handleClick(e, navInfo())}>Info</button>
-            <button onClick={e => handleClick(e, navSignup())}>Signup</button>
+        <div className="form">
+            <div className="form-title">Login</div>
+            <div className="form-links">
+                <div className="form-link" onClick={e => handleClick(e, navInfo())}>About</div>
+                <div className="form-link" onClick={e => handleClick(e, navSignup())}>Signup</div>
+            </div>
+            <span className="form-error">{errors['error'] && errors['error']}</span>
+            <input className={errors.error ? "form-control my-3 is-invalid": "form-control my-3"} type="text" onChange={e => setUsername(e.target.value)} placeholder="Username"></input>
+            <input className={errors.error ? "form-control my-3 is-invalid": "form-control my-3"} type="password" onChange={e => setPassword(e.target.value)} placeholder="Password"></input>
+            <div className="text-center">
+                <button className="btn btn-primary" onClick={e => login(e)}>Login</button>
+            </div>
         </div>
     )
 }

@@ -2,12 +2,29 @@ body {
   font-size: 2vh;
 }
 
-.friend-list {
-  padding: 6vh;
-  border-radius: 2vh;
+#root {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.friend-panel {
+  z-index:2;
+  height: 90vh;
+}
+
+.friend-panel-item {
+  padding: 5vh;
   background-color: dodgerblue;
   color: white;
   height: 90vh;
+  border-radius: 2vh;
+}
+
+.card-header, .add-input {
+  width: 8vw;
 }
 
 .list-group-item.active {
@@ -24,46 +41,42 @@ body {
 
 .friend-list-item-enter {
   opacity:0.01;
-  height: 0;
+  /* height: 0; */
 }
 
 .friend-list-item-enter-active {
   opacity: 1;
-  height: 6vh;
-  transition: opacity 300ms ease-in, height 300ms ease;
+  /* height: 6vh; */
+  transition: all 300ms ease-in;
 }
 
 .friend-list-item-exit {
   opacity: 1;
-  height: 6vh;
+  /* height: 6vh; */
 }
 
 .friend-list-item-exit-active {
   opacity:0.01;
-  height: 0;
-  transition: opacity 300ms ease-out, height 300ms ease;
+  /* height: 0; */
+  transition: all 300ms ease-out;
 }
 
 .friend-panel-item-enter {
   opacity: 0.01;
-  margin-top: -100px;
 }
 
 .friend-panel-item-enter-active {
   opacity: 1;
-  margin-top: 0;
-  transition: opacity 300ms ease-in, margin 300ms ease-in;
+  transition: opacity 300ms ease-in;
 }
 
 .friend-panel-item-exit {
   opacity: 1;
-  margin-top: 0;
 }
 
 .friend-panel-item-exit-active {
-  margin-top: -100px;
   opacity: 0.01;
-  transition: opacity 300ms ease-out, margin 300ms ease-out;
+  transition: opacity 300ms ease-out;
 }
 
 .conversation {
@@ -72,33 +85,56 @@ body {
   height: 90vh;
   color: white;
   padding: 6vh;
+  margin: 0 6vh;
   text-align: center;
 }
 
 .conversation-enter {
-  margin-left:100%;
+  opacity:0;
 }
 
 .conversation-enter-active {
-  margin-left:0;
-  transition: margin .2s ease-in;
+  opacity:1;
+  transition: opacity .2s ease-in;
 }
 
 .conversation-exit {
-  display: none;
+  opacity:1;
 }
 
-.main-panel-item {
-  visibility: visible;
-  transition: all 0.3s;
-  background-color: white;
-  width: 70%;
+.conversation-exit-active {
+  opacity: 0;
+  transition: opacity .2s ease;
 }
 
-.main-panel-item.hidden{
-  /* display: none; */
-  overflow: hidden;
-  width: 0;
+.main-panel-item-enter {
+  margin-left: -20vw;
+  /* width: 0; */
+  /* padding: 0; */
+}
+
+.main-panel-item-enter-active{
+  /* right: 0; */
+  margin-left: 0;
+  /* padding: 6vh; */
+  /* width: 60%; */
+  transition: all .3s;
+}
+
+.main-panel-item-exit {
+  /* right: 0; */
+  /* padding: 6vh; */
+  margin-left: 0;
+  /* width: 60%; */
+
+}
+
+.main-panel-item-exit-active {
+  /* right: 60%; */
+  /* padding: 0; */
+  margin-left: -20vw;
+  /* width: 0; */
+  transition: all .3s;
 }
 
 .controls {
@@ -118,10 +154,8 @@ body {
 }
 
 .add-friend-form {
-  width: 100%;
-  height: 25vh;
-  display: flex;
-  align-items: center;
+  height: 90vh;
+
 }
 
 .chat-display {
@@ -138,4 +172,39 @@ textarea {
   padding: 2vh;
   border: none;
   resize: none;
+}
+
+.form {
+  border: 1px solid rgb(211, 211, 211);
+  padding: 8vw;
+  border-radius: 2vh; 
+  position:relative;
+}
+
+.form-links {
+  display: flex;
+  position: absolute;
+  bottom: 1vh;
+  right: 1vh;
+}
+
+.form-link {
+  cursor: pointer;
+  color: dodgerblue;
+  padding: 1vh;
+}
+
+.form-title {
+  position: absolute;
+  font-size: 3vh;
+  top:3vw;
+  left:3vw;
+}
+
+.form-error {
+  color: rgb(255, 103, 103);
+}
+
+.form-label {
+  font-size: 1vw;
 }

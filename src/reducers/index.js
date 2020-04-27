@@ -6,6 +6,8 @@ import signupErrorsReducer from '../reducers/signupErrors';
 import friendPanelReducer from './friendPanel';
 import friendDataReducer from './friendData';
 import currentConversationReducer from './currentConversation';
+import requestDataReducer from './requestData';
+import showConversationReducer from './showConversation';
 
 const rootReducer = combineReducers({
     nav: navReducer,
@@ -14,7 +16,9 @@ const rootReducer = combineReducers({
     signupErrors: signupErrorsReducer,
     friendPanel: friendPanelReducer,
     friendData: friendDataReducer,
-    currentConversation: currentConversationReducer
+    currentConversation: currentConversationReducer,
+    requestData: requestDataReducer,
+    showConversation: showConversationReducer
 })
 
 export default rootReducer;

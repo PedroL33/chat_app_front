@@ -73,34 +73,6 @@ export const setFriendData = (data) => {
     }
 }
 
-export const newOnlineFriend = (friend) => {
-    return {
-        type: "NEW_ONLINE_FRIEND",
-        payload: friend
-    }
-}
-
-export const newOfflineFriend = (friend) => {
-    return {
-        type: "NEW_OFFLINE_FRIEND",
-        payload: friend
-    }
-}
-
-export const removeRequest = (request) => {
-    return {
-        type: "REMOVE_REQUEST",
-        payload: request
-    }
-}
-
-export const newRequest = (request) => {
-    return {
-        type: "NEW_REQUEST",
-        payload: request
-    }
-}
-
 export const setConversation = (friend) => {
     return {
         type: "SET_CONVERSATION",
@@ -111,5 +83,24 @@ export const setConversation = (friend) => {
 export const clearConversation = () => {
     return {
         type: "CLEAR_CONVERSATION"
+    }
+}
+
+export const setRequestData = (data) => {
+    return {
+        type: "SET_REQUEST_DATA",
+        payload: data
+    }
+}
+
+export const showConversation = () => {
+    return {
+        type: "SHOW_CONVERSATION"
+    }
+}
+
+export const hideConversation = () => {
+    return {
+        type: "HIDE_CONVERSATION"
     }
 }

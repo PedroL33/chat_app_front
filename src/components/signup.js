@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { navLogin, navInfo, loginSuccess, setSignupErrors } from '../actions';
-import { useDispatch } from 'react-redux';
+import { navLogin, navInfo, loginSuccess, setSignupErrors, clearSignupErrors } from '../actions';
+import { useDispatch, useSelector } from 'react-redux';
 
 function Signup() {
     const dispatch = useDispatch();
@@ -9,9 +9,23 @@ function Signup() {
     const [confirm, setConfirm] = useState("");
     const [email, setEmail] = useState("");
 
+    const errorData = useSelector(state => state.signupErrors)
+
+    const errors = {}
+    if(errorData.errors) {
+        errorData.errors.forEach(item => {
+        errors[item.param] = item.msg
+        })
+    }
+
     function handleClick(e, action) {
         e.preventDefault(e);
         dispatch(action);
+        dispatch(clearSignupErrors())
+        setUsername("")
+        setPassword("")
+        setConfirm("")
+        setEmail("")
     }
 
     function signup(e) {
@@ -37,6 +51,11 @@ function Signup() {
                 if(data.token) {
                     localStorage.setItem('token', data.token)
                     dispatch(loginSuccess())
+                    dispatch(clearSignupErrors())
+                    setUsername("")
+                    setPassword("")
+                    setConfirm("")
+                    setEmail("")
                 }else {
                     dispatch(setSignupErrors(data))
                 }
@@ -46,16 +65,27 @@ function Signup() {
     }
 
     return (
-        <div>
-            Signup
-            <input type="text" placeholder="Username" onChange={e=>setUsername(e.target.value)}></input>
-            <input type="text" placeholder="Email" onChange={e=>setEmail(e.target.value)}></input>
-            <input type="password" placeholder="Password" onChange={e=>setPassword(e.target.value)}></input>
-            <input type="password" placeholder="Confirm" onChange={e=>setConfirm(e.target.value)}></input>
-            {/* <div>{error}</div> */}
-            <button onClick={e => signup(e)}>Signup</button>
-            <button onClick={e => handleClick(e, navLogin())}>Login</button>
-            <button onClick={e => handleClick(e, navInfo())}>Info</button>
+        <div className="form">
+            <div className="form-title">Signup</div>
+            <label className="form-label">Username:</label>
+            {errors.body && <span className="form-error">&nbsp;{errors.body}</span>}
+            {errors.username && <span className="form-error">&nbsp;{errors.username}</span>}
+            <input className={errors.username ? "form-control mb-2 is-invalid" :"form-control mb-2"} type="text" placeholder="Minimum 4 characters." onChange={e=>setUsername(e.target.value)}></input>
+            <label className="form-label">Email:</label>
+            {errors.email && <span className="form-error">&nbsp;{errors.email}</span>}
+            <input className={errors.email ? "form-control mb-2 is-invalid" :"form-control mb-2"} type="text" placeholder="Email with a valid format." onChange={e=>setEmail(e.target.value)}></input>
+            <label className="form-label">Password:</label>
+            {errors.password && <span className="form-error">&nbsp;{errors.password}</span>}
+            <input className={errors.password ? "form-control mb-2 is-invalid" :"form-control mb-2"} type="password" placeholder="Minimum 6 characters." onChange={e=>setPassword(e.target.value)}></input>
+            <label className="form-label">Confirm Password</label>
+            <input className="form-control mb-3" type="password" placeholder="Must match password." onChange={e=>setConfirm(e.target.value)}></input>
+            <div className="text-center">
+                <button className="btn btn-success" onClick={(e) => signup(e)}>Signup</button>
+            </div>
+            <div className="form-links">
+                <div className="form-link" onClick={(e) => handleClick(e, navLogin())}>Login</div>
+                <div className="form-link" onClick={(e) => handleClick(e, navInfo())}>About</div>
+            </div>
         </div>
     )
 }
