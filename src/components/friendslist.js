@@ -8,9 +8,11 @@ function Friendslist() {
 
     const dispatch = useDispatch()
     const friendData = useSelector(state => state.friendData)
+    const unreadData = useSelector(state => state.unreadData)
     const currentConversation = useSelector(state => state.currentConversation)
 
     function handleClick(item) {
+        socket.emit('mark_read', item)
         dispatch(setConversation(item))
         dispatch(showConversation())
     }
@@ -27,10 +29,11 @@ function Friendslist() {
             <ul className="list-group list-group-flush overflow-auto">
                 <div className="card-header">Online</div>
                 <TransitionGroup>
-                    {friendData.online && friendData.online.map((item, i) => (
-                        <CSSTransition timeout={300} classNames="friend-list-item" key={item}>
-                            <li className={currentConversation===item ? "friend-list-item list-group-item active" : "friend-list-item list-group-item"}>
-                                <div onClick={() => handleClick(item)} className="ml-2">{item}</div>
+                    {friendData.online && friendData.online.map((friend) => (
+                        <CSSTransition timeout={300} classNames="friend-list-item" key={friend}>
+                            <li className={currentConversation===friend ? "friend-list-item list-group-item active" : "friend-list-item list-group-item"}>
+                                <div onClick={() => handleClick(friend)}>{friend}</div>
+                                {unreadData.friend && <div>{unreadData[friend]}</div>}
                             </li>
                         </CSSTransition>
                         )
@@ -43,14 +46,14 @@ function Friendslist() {
                     {friendData.offline && friendData.offline.map((item, i) => (
                         <CSSTransition timeout={300} classNames="friend-list-item" key={item}>
                             <li className="friend-list-item list-group-item">
-                                <div className="ml-2">{item}</div>    
+                                <div>{item}</div>    
                             </li>
                         </CSSTransition>
                         )
                     )} 
                 </TransitionGroup>
             </ul>
-            <button className= "mx-auto mt-5 w-50 btn btn-success" onClick={()=> dispatch(addFriends())}>
+            <button className= "mx-auto mt-3 text-center btn btn-success" onClick={()=> dispatch(addFriends())}>
                 <i class="fas fa-user-plus"></i>
             </button>
         </div>

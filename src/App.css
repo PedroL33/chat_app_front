@@ -10,22 +10,33 @@ body {
   justify-content: center;
 }
 
+.btn {
+  width: 5vw;
+  height: 5vh;
+  font-size: 1vw;
+}
+
 .friend-panel {
   z-index:2;
   height: 90vh;
+  width: 15vw;
 }
 
 .friend-panel-item {
-  padding: 5vh;
+  padding: 3vh;
   background-color: dodgerblue;
   color: white;
   height: 90vh;
   border-radius: 2vh;
+  width: 100%;
 }
 
 .card-header, .add-input-container, .request-message-container {
-  width: 12vw;
-  font-size: 1.2vw;
+  width: 100%;
+  font-size: 1vw;
+  padding: 1vw 0;
+  overflow: hidden;
+  text-align:center;
 }
 
 .list-group-item.active {
@@ -34,10 +45,20 @@ body {
 }
 
 .friend-list-item {
-  height: 6vh;
+  height: 3vh;
+  padding: 2vh 0;
+  width: 100%;
   background-color: dodgerblue;
   display:flex;
   align-items:center;
+  justify-content: center;
+  border:none;
+}
+
+.friend-list-item:hover {
+  cursor: pointer;
+  background-color: rgba(216, 204, 204, 0.2);
+  color: white;
 }
 
 .friend-panel-item-enter, .request-panel-item-enter, .conversation-enter, .friend-list-item-enter {
@@ -64,8 +85,9 @@ body {
   height: 90vh;
   color: white;
   padding: 6vh;
-  margin: 0 6vh;
+  margin: 0 3vh;
   text-align: center;
+  width: 65%;
 }
 
 .main-panel-item-enter {
@@ -93,8 +115,8 @@ body {
 
 .close-button {
   position: absolute;
-  top:10px;
-  right:20px;
+  top:1vh;
+  right:1vw;
 }
 
 .close-button:hover {
@@ -111,8 +133,12 @@ body {
   width: 100%;
   height: 50vh;
   background-color: white;
-  border-radius:2vh;
   margin: 3vh 0;
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+  scrollbar-width: thin; 
+  scrollbar-color: hsl(210, 100%, 56%, 0.2) white
 }
 
 textarea {
@@ -173,4 +199,56 @@ textarea {
   padding: 2vh 0;
   border-radius: 2vh;
   background-color: rgb(124, 122, 122, .1);
+}
+
+.message-container {
+  padding: 1.5vh;
+  color: dodgerblue;
+  width: 70%;
+}
+
+.message-time {
+  font-size: .7vw;
+  color: rgb(128, 128, 128, 0.5);
+}
+
+.message-contents {
+  color: dodgerblue;
+  padding: .5vw 1.5vw;
+  border-radius: 1.5vw;
+  display: inline-block;
+}
+
+.message {
+  word-break: break-all;
+  margin-bottom: 0;
+  display: flex;
+  text-align: left;
+}
+
+.to .message-contents {
+  background-color: rgb(30, 144, 255, .2);
+}
+.from .message-contents {
+  background-color: rgb(128, 128, 128, .2);
+}
+.to {
+  margin-left: auto;
+  text-align: right;
+}
+
+.from {
+  margin-right: auto;
+  text-align: left;
+}
+
+@media screen and (max-width: 900px) {
+  .friend-panel {
+    position: absolute;
+    z-index: 0;
+    top: 5vh;
+  }
+  .conversation {
+    width: 100%;
+  }
 }

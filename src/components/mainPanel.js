@@ -6,13 +6,13 @@ import { CSSTransition } from 'react-transition-group';
 
 function MainPanel() {
 
-    const conversation = useSelector(state => state.currentConversation)
     const showConversation = useSelector(state => state.showConversation)
+    
     return (
         <div className="d-flex justify-content-around overflow-hidden">
             <FriendPanel />
             <CSSTransition in={showConversation} timeout={300} classNames='main-panel-item' unmountOnExit mountOnEnter>
-                <ChatPanel conversation={conversation} /> 
+                <ChatPanel /> 
             </CSSTransition>
         </div>
     )

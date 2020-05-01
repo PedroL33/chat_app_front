@@ -43,7 +43,7 @@ function Friendsadd() {
                             </div>
                             :<div>
                                 <div className="add-input-container">
-                                    <input className="form-control" placeholder="Username" type="text" onChange={(e) => setAddFriend(e.target.value)}></input> 
+                                    <input className="form-control" placeholder="Username..." type="text" onChange={(e) => setAddFriend(e.target.value)}></input> 
                                 </div>
                                 <div className="text-center">
                                     <button className="btn btn-success btn-sm mt-3" onClick={() => socket.emit('send_request', addFriend)}>

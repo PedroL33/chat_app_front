@@ -116,3 +116,24 @@ export const hideRequestMessage = () => {
         type: "HIDE_REQUEST_MESSAGE"
     }
 }
+
+export const setCurrentUser = (user) => {
+    return {
+        type: "SET_CURRENT_USER",
+        payload: user
+    }
+}
+
+export const setMessageData = (data) => {
+    return {
+        type: "SET_MESSAGE_DATA",
+        payload: data
+    }
+}
+
+export const setUnreadData = (data) => {
+    return {
+        type: "SET_UNREAD_DATA", 
+        payload: data
+    }
+}

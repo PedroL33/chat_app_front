@@ -9,6 +9,9 @@ import currentConversationReducer from './currentConversation';
 import requestDataReducer from './requestData';
 import showConversationReducer from './showConversation';
 import requestMessageReducer from './requestMessage';
+import currentUserReducer from './currentUser';
+import messageDataReducer from './messageData';
+import unreadDataReducer from './unreadData';
 
 const rootReducer = combineReducers({
     nav: navReducer,
@@ -20,7 +23,10 @@ const rootReducer = combineReducers({
     currentConversation: currentConversationReducer,
     requestData: requestDataReducer,
     showConversation: showConversationReducer,
-    requestMessage: requestMessageReducer
+    requestMessage: requestMessageReducer,
+    currentUser: currentUserReducer,
+    messageData: messageDataReducer,
+    unreadData: unreadDataReducer
 })
 
 export default rootReducer;
