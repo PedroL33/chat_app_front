@@ -61,7 +61,7 @@ function Friendsadd() {
                             <CSSTransition timeout={300} classNames="friend-list-item" key={item}>
                                 <li className="friend-list-item list-group-item">
                                     <div className="mx-auto">{item}</div>   
-                                    <button className="btn btn-outline-success mx-auto" onClick={() => socket.emit('accept_request', item)}>Accept</button> 
+                                    <button className="btn btn-success btn-sm mx-auto" onClick={() => socket.emit('accept_request', item)}><i className="far fa-check-circle"></i></button> 
                                 </li>
                             </CSSTransition>
                             )

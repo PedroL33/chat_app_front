@@ -137,3 +137,17 @@ export const setUnreadData = (data) => {
         payload: data
     }
 }
+
+export const setIsTyping = (friend) => {
+    return {
+        type: "SET_IS_TYPING",
+        payload: friend
+    }
+}
+
+export const setNotTyping = (friend) => {
+    return {
+        type: "SET_NOT_TYPING",
+        payload: friend
+    }
+}

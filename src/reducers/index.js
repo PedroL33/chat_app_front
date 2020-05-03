@@ -26,7 +26,7 @@ const rootReducer = combineReducers({
     requestMessage: requestMessageReducer,
     currentUser: currentUserReducer,
     messageData: messageDataReducer,
-    unreadData: unreadDataReducer
+    unreadData: unreadDataReducer,
 })
 
 export default rootReducer;

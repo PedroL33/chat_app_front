@@ -11,9 +11,9 @@ function Friendslist() {
     const unreadData = useSelector(state => state.unreadData)
     const currentConversation = useSelector(state => state.currentConversation)
 
-    function handleClick(item) {
-        socket.emit('mark_read', item)
-        dispatch(setConversation(item))
+    function handleClick(friend) {
+        socket.emit('mark_read', friend)
+        dispatch(setConversation(friend))
         dispatch(showConversation())
     }
 
@@ -29,11 +29,12 @@ function Friendslist() {
             <ul className="list-group list-group-flush overflow-auto">
                 <div className="card-header">Online</div>
                 <TransitionGroup>
-                    {friendData.online && friendData.online.map((friend) => (
+                    {friendData.online && Object.keys(friendData.online).map((friend) => (
                         <CSSTransition timeout={300} classNames="friend-list-item" key={friend}>
-                            <li className={currentConversation===friend ? "friend-list-item list-group-item active" : "friend-list-item list-group-item"}>
-                                <div onClick={() => handleClick(friend)}>{friend}</div>
-                                {unreadData.friend && <div>{unreadData[friend]}</div>}
+                            <li className={currentConversation===friend ? "friend-list-item list-group-item active" : "friend-list-item list-group-item"} onClick={() => handleClick(friend)}>
+                                <div>{friend}</div>
+                                {friendData.online[friend] && friendData.online[friend].isTyping ? <div>...</div>: null}
+                                {unreadData[friend] && <div className="unread bg-warning">{unreadData[friend]}</div>}
                             </li>
                         </CSSTransition>
                         )
@@ -43,10 +44,10 @@ function Friendslist() {
             <ul className="list-group list-group-flush overflow-auto">
                 <div className="card-header">Offline</div>
                 <TransitionGroup>
-                    {friendData.offline && friendData.offline.map((item, i) => (
-                        <CSSTransition timeout={300} classNames="friend-list-item" key={item}>
+                    {friendData.offline && Object.keys(friendData.offline).map((friend) => (
+                        <CSSTransition timeout={300} classNames="friend-list-item" key={friend}>
                             <li className="friend-list-item list-group-item">
-                                <div>{item}</div>    
+                                <div>{friend}</div>    
                             </li>
                         </CSSTransition>
                         )

@@ -45,7 +45,7 @@ body {
 }
 
 .friend-list-item {
-  height: 3vh;
+  height: 5vh;
   padding: 2vh 0;
   width: 100%;
   background-color: dodgerblue;
@@ -53,6 +53,7 @@ body {
   align-items:center;
   justify-content: center;
   border:none;
+  position: relative;
 }
 
 .friend-list-item:hover {
@@ -87,7 +88,7 @@ body {
   padding: 6vh;
   margin: 0 3vh;
   text-align: center;
-  width: 65%;
+  width: 40vw;
 }
 
 .main-panel-item-enter {
@@ -138,7 +139,8 @@ body {
   flex-direction: column;
   overflow-y: scroll;
   scrollbar-width: thin; 
-  scrollbar-color: hsl(210, 100%, 56%, 0.2) white
+  scrollbar-color: hsl(210, 100%, 56%, 0.2) white;
+  position: relative;
 }
 
 textarea {
@@ -186,7 +188,7 @@ textarea {
 
 .add-form-container {
   height: 30%;
-  width: 12vw;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -242,13 +244,40 @@ textarea {
   text-align: left;
 }
 
-@media screen and (max-width: 900px) {
+.unread {
+  border-radius: 50%;
+  width: 1.5vw;
+  height: 1.5vw;
+  color: white;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  position: absolute;
+  top:.75vh;
+  right:.75vh;
+}
+
+.chat-display-wrapper {
+  position: relative;
+}
+
+.is-typing {
+  position: absolute;
+  opacity: 0.5;
+  bottom:0;
+  background-color:dodgerblue;
+  width: 100%;
+}
+
+@media screen and (max-width: 700px) {
   .friend-panel {
     position: absolute;
     z-index: 0;
     top: 5vh;
+    width: 40vw;
   }
   .conversation {
-    width: 100%;
+    width: 90vw;
   }
 }
