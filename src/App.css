@@ -3,38 +3,49 @@ body {
 }
 
 #root {
-  height: 100vh;
   width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  margin: auto;
 }
 
 .btn {
-  width: 5vw;
-  height: 5vh;
-  font-size: 1vw;
+  font-size: 10px;
 }
 
 .friend-panel {
-  z-index:2;
-  height: 90vh;
-  width: 15vw;
+  width: 20%;
+  /* min-width: 20%; */
+  height: 100%;
+  margin: 0 15px;
+}
+
+.main-panel {
+  width: 100%;
+}
+
+.content {
+  margin: auto;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
 }
 
 .friend-panel-item {
-  padding: 3vh;
   background-color: dodgerblue;
   color: white;
-  height: 90vh;
-  border-radius: 2vh;
+  height: 100vh;
   width: 100%;
+  border: none;
+  overflow: auto;
+  display:flex;
+  flex-direction: column;
+  justify-content: space-around;
+  position: relative;
 }
 
 .card-header, .add-input-container, .request-message-container {
   width: 100%;
-  font-size: 1vw;
-  padding: 1vw 0;
+  font-size: 12px;
+  padding: 10px;
   overflow: hidden;
   text-align:center;
 }
@@ -42,12 +53,13 @@ body {
 .list-group-item.active {
   background-color: white;
   color: dodgerblue;
+  border-radius: 100px;
 }
 
 .friend-list-item {
-  height: 5vh;
-  padding: 2vh 0;
-  width: 100%;
+  height: 20px;
+  padding: 15px 0;
+  margin: 5px;
   background-color: dodgerblue;
   display:flex;
   align-items:center;
@@ -60,6 +72,7 @@ body {
   cursor: pointer;
   background-color: rgba(216, 204, 204, 0.2);
   color: white;
+  border-radius: 100px;
 }
 
 .friend-panel-item-enter, .request-panel-item-enter, .conversation-enter, .friend-list-item-enter {
@@ -81,31 +94,33 @@ body {
 }
 
 .conversation {
-  border-radius: 2vh;
   background-color: dodgerblue;
-  height: 90vh;
   color: white;
-  padding: 6vh;
-  margin: 0 3vh;
+  padding: 2vh 2vw;
   text-align: center;
-  width: 40vw;
+  min-height: 75vh;
+  max-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
 .main-panel-item-enter {
-  margin-left: -20vw;
+  opacity: 0;
 }
 
 .main-panel-item-enter-active{
-  margin-left: 0;
+  opacity: 1;
   transition: all .3s;
 }
 
 .main-panel-item-exit {
-  margin-left: 0;
+  opacity: 1;
 }
 
 .main-panel-item-exit-active {
-  margin-left: -20vw;
+  opacity: 0;
   transition: all .3s;
 }
 
@@ -116,8 +131,9 @@ body {
 
 .close-button {
   position: absolute;
-  top:1vh;
-  right:1vw;
+  top:10px;
+  right:10px;
+  font-size: 12px;
 }
 
 .close-button:hover {
@@ -126,15 +142,14 @@ body {
 }
 
 .add-friend-form {
-  height: 90vh;
-
+  height: 100vh;
 }
 
 .chat-display {
   width: 100%;
   height: 50vh;
   background-color: white;
-  margin: 3vh 0;
+  margin: 20px 0;
   display: flex;
   flex-direction: column;
   overflow-y: scroll;
@@ -144,14 +159,18 @@ body {
 }
 
 textarea {
-  width: 100%;
-  border-radius: 2vh;
-  padding: 2vh;
+  width: 400px;
+  max-height: 20vh;
+  border-radius: 10px;
+  padding: 10px;
   border: none;
   resize: none;
 }
 
 .form {
+  margin: 15% auto;
+  width: 50%;
+  height: 50%;
   border: 1px solid rgb(211, 211, 211);
   padding: 8vw;
   border-radius: 2vh; 
@@ -198,7 +217,7 @@ textarea {
 .request-message-container {
   position:relative;
   text-align: center;
-  padding: 2vh 0;
+  margin: 2vh;
   border-radius: 2vh;
   background-color: rgb(124, 122, 122, .1);
 }
@@ -270,14 +289,55 @@ textarea {
   width: 100%;
 }
 
+.bm-burger-button {
+  position: fixed;
+  width: 36px;
+  height: 36px;
+  left: 36px;
+  top: 36px;
+}
+
+.bm-burger-bars {
+  background: black;
+}
+
+.bm-menu-wrap {
+  scrollbar-color: rgb(30, 144, 255, 0.5) white;
+  scrollbar-width: thin;
+}
+
+#sidebar, .bm-cross-button {
+  display: none;
+  padding: 0 0 0 15px;
+}
+
+.profile-portrait {
+  width:200px;
+  height: 200px;
+  border-radius: 50%;
+  background-repeat: no-repeat;
+  background-size: 200px 200px;
+  position: relative;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+.file-upload {
+  font-size: 36px;
+}
+
 @media screen and (max-width: 700px) {
   .friend-panel {
-    position: absolute;
-    z-index: 0;
-    top: 5vh;
-    width: 40vw;
+    display: none;
+  }
+  #sidebar {
+    display: block;
   }
   .conversation {
-    width: 90vw;
+    width: 80vw;
+    height: 80vh;
+    margin: auto;
   }
 }

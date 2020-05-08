@@ -1,19 +1,25 @@
 import React from 'react';
 import FriendPanel from './friendPanel';
 import ChatPanel from './chatPanel';
+import Overview from './overview';
 import { useSelector } from 'react-redux';
-import { CSSTransition } from 'react-transition-group';
-
+import { CSSTransition, SwitchTransition } from 'react-transition-group';
+import Sidebar from './sidebar';
 function MainPanel() {
 
     const showConversation = useSelector(state => state.showConversation)
     
     return (
-        <div className="d-flex justify-content-around overflow-hidden">
+        <div className="row main-panel">
+            <Sidebar />
             <FriendPanel />
-            <CSSTransition in={showConversation} timeout={300} classNames='main-panel-item' unmountOnExit mountOnEnter>
-                <ChatPanel /> 
-            </CSSTransition>
+            <div id="content" className="content">
+                <SwitchTransition mode="out-in">
+                    <CSSTransition key={showConversation} timeout={300} classNames='main-panel-item'>
+                        {showConversation ? <ChatPanel /> : <Overview />}
+                    </CSSTransition>
+                </SwitchTransition>
+            </div>
         </div>
     )
 }

@@ -60,13 +60,14 @@ function FriendPanel() {
             socket.off('friend_update')
             socket.off('message_update')
             socket.off('friend_is_typing')
+            socket.off('friend_stopped_typing')
         }
     })
 
     var nav = useSelector(state => state.friendPanel) 
 
     return (
-        <div className="position-realtive friend-panel overflow-hidden">
+        <div className="position-realtive friend-panel">
             <SwitchTransition mode='out-in'>
                 <CSSTransition key={nav} timeout={300} classNames='friend-panel-item'>
                     { nav ==="add" ?  <Friendsadd /> : <Friendslist /> } 

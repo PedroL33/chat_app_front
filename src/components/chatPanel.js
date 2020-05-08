@@ -68,13 +68,13 @@ function ChatPanel() {
 
           <div className="conversation position-relative overflow-hidden">
               <span className="close-button" onClick={() => handleClick()}>
-                <i class="far fa-times-circle"></i>
+                <i className="far fa-times-circle"></i>
               </span>
               <div className="text-center">{conversationUser}</div>
               <div className="chat-display-wrapper">
                 <div ref={displayRef} className="chat-display">
                   {currentConversation.map(item => (
-                      <div className={item.to===currentUser ? "message-container to" : "message-container from"} key={item.id}>
+                      <div className={item.to===currentUser ? "message-container to" : "message-container from"} key={item._id}>
                         <div className="message-contents">
                           <div className="message">
                             <div>{item.message}</div>
@@ -88,7 +88,6 @@ function ChatPanel() {
                 {friendData.online[conversationUser] && friendData.online[conversationUser].isTyping ? <div className="is-typing">{conversationUser} is typing...</div>: null}
               </div>
               <textarea ref={inputRef} className="mx-auto" onChange={(e)=> handleChange(e)} onKeyPress={(e)=> handleKeyPress(e)} placeholder="What on your mind..."></textarea>
-              <button className="btn btn-success mt-3" onClick={()=> sendMessage()}>Send</button>
           </div>
         </CSSTransition>
       </SwitchTransition>

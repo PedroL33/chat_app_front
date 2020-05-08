@@ -31,7 +31,7 @@ function App() {
   const auth = useSelector(state => state.authenticated)
 
   return (
-    <div>
+    <div className="w-100 h-100">
       {auth ? <Dashboard /> : nav=="login" ? <Login /> : nav=="signup" ? <Signup /> : <Info />}
     </div>
   );

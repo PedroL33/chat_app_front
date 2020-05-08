@@ -31,8 +31,8 @@ function Friendsadd() {
 
     return (
         <div>
-            <div className="card friend-panel-item d-flex justify-content-around ">
-                <span className="close-button" onClick={() => handleClick()}><i class="far fa-times-circle"></i></span>
+            <div className="friend-panel-item">
+                <span className="close-button" onClick={() => handleClick()}><i className="far fa-times-circle"></i></span>
                 <div className="add-form-container">
                     <SwitchTransition mode='out-in'>
                         <CSSTransition key={show} timeout={300} classNames='request-panel-item'>
@@ -47,7 +47,7 @@ function Friendsadd() {
                                 </div>
                                 <div className="text-center">
                                     <button className="btn btn-success btn-sm mt-3" onClick={() => socket.emit('send_request', addFriend)}>
-                                        <i class="fas fa-plus"></i>
+                                        <i className="fas fa-plus"></i>
                                     </button>
                                 </div>
                             </div> } 

@@ -24,7 +24,7 @@ function Friendslist() {
     }
 
     return (          
-        <div className="card friend-panel-item justify-content-between position-relative">
+        <div className="friend-panel-item justify-content-between position-relative">
             <span className="close-button" onClick={()=>signout()}>Logout</span>
             <ul className="list-group list-group-flush overflow-auto">
                 <div className="card-header">Online</div>
@@ -55,7 +55,7 @@ function Friendslist() {
                 </TransitionGroup>
             </ul>
             <button className= "mx-auto mt-3 text-center btn btn-success" onClick={()=> dispatch(addFriends())}>
-                <i class="fas fa-user-plus"></i>
+                <i className="fas fa-user-plus"></i>
             </button>
         </div>
     )

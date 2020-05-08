@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { logout, setLoginErrors, setCurrentUser } from '../actions';
 import io from 'socket.io-client';
 import MainPanel from './mainPanel';
@@ -49,9 +49,7 @@ function Dashboard() {
     })
 
     return (
-        <div>
-            <MainPanel />
-        </div>
+        <MainPanel />
     )
 }
 
