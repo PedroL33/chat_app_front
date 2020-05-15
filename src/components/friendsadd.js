@@ -32,7 +32,7 @@ function Friendsadd() {
     return (
         <div>
             <div className="friend-panel-item">
-                <span className="close-button" onClick={() => handleClick()}><i className="far fa-times-circle"></i></span>
+                <span className="close-button" onClick={() => handleClick()}><span aria-hidden="true">&times;</span></span>
                 <div className="add-form-container">
                     <SwitchTransition mode='out-in'>
                         <CSSTransition key={show} timeout={300} classNames='request-panel-item'>
@@ -43,12 +43,10 @@ function Friendsadd() {
                             </div>
                             :<div>
                                 <div className="add-input-container">
-                                    <input className="form-control" placeholder="Username..." type="text" onChange={(e) => setAddFriend(e.target.value)}></input> 
-                                </div>
-                                <div className="text-center">
-                                    <button className="btn btn-success btn-sm mt-3" onClick={() => socket.emit('send_request', addFriend)}>
+                                    <input className="form-control" placeholder="Username..." type="text" onChange={(e) => setAddFriend(e.target.value)}></input>
+                                    <button className="btn btn-success btn-sm add-button" onClick={() => socket.emit('send_request', addFriend)}>
                                         <i className="fas fa-plus"></i>
-                                    </button>
+                                    </button> 
                                 </div>
                             </div> } 
                         </CSSTransition>
@@ -59,7 +57,7 @@ function Friendsadd() {
                     <TransitionGroup>
                         {requestData && requestData.map((item) => (
                             <CSSTransition timeout={300} classNames="friend-list-item" key={item}>
-                                <li className="friend-list-item list-group-item">
+                                <li className="friend-list-item">
                                     <div className="mx-auto">{item}</div>   
                                     <button className="btn btn-success btn-sm mx-auto" onClick={() => socket.emit('accept_request', item)}><i className="far fa-check-circle"></i></button> 
                                 </li>

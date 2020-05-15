@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { logout, setLoginErrors, setCurrentUser } from '../actions';
+import { useDispatch } from 'react-redux';
+import { userLogout, navLogin, setLoginErrors, setCurrentUser, addEvent } from '../actions';
 import io from 'socket.io-client';
 import MainPanel from './mainPanel';
 
@@ -23,20 +23,28 @@ function Dashboard() {
         socket.on('duplicate_auth', (error) => {
             socket.disconnect();
             localStorage.removeItem('token');
-            dispatch(logout());
+            dispatch(userLogout());
+            dispatch(navLogin())
             dispatch(setLoginErrors({error: error}))
         }) 
         socket.on('invalid_auth', () => {
             socket.disconnect();
-            dispatch(logout());
+            dispatch(userLogout());
         })      
-        socket.on('logged_in', (username) => {
-            dispatch(setCurrentUser(username))
+        socket.on('current_user_data', (data) => {
+            dispatch(setCurrentUser(data))
+        })
+        socket.on('update_complete', (data) => {
+            socket.emit('get_current_user')
+            socket.emit('broadcast_update', data)
+        })
+        socket.on('timeline_update', (data) => {
+            dispatch(addEvent(data))
         })
         socket.on('error', (error) => {
             if(error === "Invalid token.") {
                 socket.disconnect();
-                dispatch(logout())
+                dispatch(userLogout())
             }
         })
         return function cleanup() {
@@ -45,6 +53,8 @@ function Dashboard() {
             socket.off('error')
             socket.off('duplcate_auth')
             socket.off('logged_in')
+            socket.off('update_complete')
+            socket.off('timeline_update')
         }
     })
 

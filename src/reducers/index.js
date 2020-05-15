@@ -12,8 +12,9 @@ import requestMessageReducer from './requestMessage';
 import currentUserReducer from './currentUser';
 import messageDataReducer from './messageData';
 import unreadDataReducer from './unreadData';
+import timelineEventsReducer from './timelineEvents';
 
-const rootReducer = combineReducers({
+const appReducer = combineReducers({
     nav: navReducer,
     authenticated: authReducer,
     loginErrors: loginErrorReducer,
@@ -27,6 +28,14 @@ const rootReducer = combineReducers({
     currentUser: currentUserReducer,
     messageData: messageDataReducer,
     unreadData: unreadDataReducer,
+    timelineEvents: timelineEventsReducer
 })
+
+const rootReducer = (state, action) => {
+    if(action.type==="USER_LOGOUT") {
+        state = undefined
+    }
+    return appReducer(state, action)
+}
 
 export default rootReducer;

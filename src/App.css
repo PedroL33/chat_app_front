@@ -12,8 +12,7 @@ body {
 }
 
 .friend-panel {
-  width: 20%;
-  /* min-width: 20%; */
+  width: 200px;
   height: 100%;
   margin: 0 15px;
 }
@@ -35,31 +34,40 @@ body {
   height: 100vh;
   width: 100%;
   border: none;
-  overflow: auto;
   display:flex;
   flex-direction: column;
   justify-content: space-around;
   position: relative;
+  overflow: auto;
 }
 
 .card-header, .add-input-container, .request-message-container {
-  width: 100%;
+  width: 90%;
   font-size: 12px;
-  padding: 10px;
+  margin: 10px;
   overflow: hidden;
   text-align:center;
+  position: relative;
 }
 
-.list-group-item.active {
+.add-button {
+  position: absolute;
+  top:0;
+  right:0;
+  height: 100%;
+  width: 15%;
+}
+
+.friend-list-item.active {
   background-color: white;
-  color: dodgerblue;
+  background-color: rgba(216, 204, 204, 0.2);
   border-radius: 100px;
 }
 
 .friend-list-item {
-  height: 20px;
-  padding: 15px 0;
-  margin: 5px;
+  height: 30px;
+  padding: 15px;
+  margin: 5px 20px;
   background-color: dodgerblue;
   display:flex;
   align-items:center;
@@ -75,20 +83,29 @@ body {
   border-radius: 100px;
 }
 
-.friend-panel-item-enter, .request-panel-item-enter, .conversation-enter, .friend-list-item-enter {
+.tooltip {
+  position: absolute;
+  top:0;
+  right: -100px; 
+  z-index:2;
+  border: 1px solid black;
+  color: black;
+}
+
+.friend-panel-item-enter, .request-panel-item-enter, .conversation-enter, .friend-list-item-enter, .main-panel-item-enter {
   opacity: 0.01;
 }
 
-.friend-panel-item-enter-active, .request-panel-item-enter-active, .conversation-enter-active, .friend-list-item-enter-active {
+.friend-panel-item-enter-active, .request-panel-item-enter-active, .conversation-enter-active, .friend-list-item-enter-active, .main-panel-item-enter-active {
   opacity: 1;
   transition: opacity 300ms ease-in;
 }
 
-.friend-panel-item-exit, .request-panel-item-exit, .conversation-exit, .friend-list-item-exit {
+.friend-panel-item-exit, .request-panel-item-exit, .conversation-exit, .friend-list-item-exit, .main-panel-item-exit {
   opacity: 1;
 }
 
-.friend-panel-item-exit-active, .request-panel-item-exit-active, .conversation-exit-active, .friend-list-item-exit-active {
+.friend-panel-item-exit-active, .request-panel-item-exit-active, .conversation-exit-active, .friend-list-item-exit-active, .main-panel-item-exit-active {
   opacity: 0.01;
   transition: opacity 300ms ease-out;
 }
@@ -96,32 +113,13 @@ body {
 .conversation {
   background-color: dodgerblue;
   color: white;
-  padding: 2vh 2vw;
+  padding: 4vh 2vw;
   text-align: center;
   min-height: 75vh;
   max-height: 100vh;
-  width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-}
-
-.main-panel-item-enter {
-  opacity: 0;
-}
-
-.main-panel-item-enter-active{
-  opacity: 1;
-  transition: all .3s;
-}
-
-.main-panel-item-exit {
-  opacity: 1;
-}
-
-.main-panel-item-exit-active {
-  opacity: 0;
-  transition: all .3s;
+  border-radius: 30px;
 }
 
 .controls {
@@ -131,9 +129,9 @@ body {
 
 .close-button {
   position: absolute;
-  top:10px;
-  right:10px;
-  font-size: 12px;
+  top:2%;
+  right:5%;
+  font-size: 24px;
 }
 
 .close-button:hover {
@@ -149,22 +147,13 @@ body {
   width: 100%;
   height: 50vh;
   background-color: white;
-  margin: 20px 0;
+  margin: 10px 0 0 0;
   display: flex;
   flex-direction: column;
   overflow-y: scroll;
   scrollbar-width: thin; 
   scrollbar-color: hsl(210, 100%, 56%, 0.2) white;
   position: relative;
-}
-
-textarea {
-  width: 400px;
-  max-height: 20vh;
-  border-radius: 10px;
-  padding: 10px;
-  border: none;
-  resize: none;
 }
 
 .form {
@@ -250,9 +239,11 @@ textarea {
 .to .message-contents {
   background-color: rgb(30, 144, 255, .2);
 }
+
 .from .message-contents {
   background-color: rgb(128, 128, 128, .2);
 }
+
 .to {
   margin-left: auto;
   text-align: right;
@@ -265,8 +256,8 @@ textarea {
 
 .unread {
   border-radius: 50%;
-  width: 1.5vw;
-  height: 1.5vw;
+  width: 20px;
+  height: 20px;
   color: white;
   display:flex;
   align-items: center;
@@ -301,14 +292,8 @@ textarea {
   background: black;
 }
 
-.bm-menu-wrap {
-  scrollbar-color: rgb(30, 144, 255, 0.5) white;
-  scrollbar-width: thin;
-}
-
 #sidebar, .bm-cross-button {
   display: none;
-  padding: 0 0 0 15px;
 }
 
 .profile-portrait {
@@ -317,7 +302,18 @@ textarea {
   border-radius: 50%;
   background-repeat: no-repeat;
   background-size: 200px 200px;
-  position: relative;
+  position: absolute;
+  top:-100px;
+  left:-100px;
+  margin: auto;
+}
+
+.username {
+  position: absolute;
+  top: -54px;
+  left: 135px;
+  font-size: 48px;
+  color: dodgerblue;
 }
 
 input[type="file"] {
@@ -325,15 +321,119 @@ input[type="file"] {
 }
 
 .file-upload {
-  font-size: 36px;
+  font-size: 24px;
+  color: rgb(0, 0, 0, 0.5);
+  margin:0;
+  padding:0;
 }
 
-@media screen and (max-width: 700px) {
+.profile-picture-controls {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.overview {
+  height: 70vh;
+  width: 500px;
+  margin: auto;
+  position: relative;
+  border-radius: 20px;
+  background-color: rgb(30, 144, 255, 0.8);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.overview-container {
+  margin-top: 50px;
+  margin-left: 100px; 
+}
+
+.status {
+  height: 125px;
+  width: 100%;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  padding: 12px 36px 12px 137px;
+  position: absolute;
+  z-index: 1;
+  color: white;
+}
+
+.timeline-container {
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  left: 0;
+  padding: 25px;
+  width: 100%;
+  height: 100%;
+  padding-top: 150px;
+}
+
+.timeline {
+  width:100%;
+  height:100%;
+  background-color: white;
+  border-radius: 25px; 
+  padding: 20px; 
+  overflow: auto;
+}
+
+.timeline-event {
+  height: 50px;
+  display:flex;
+  align-items: center;
+}
+
+.timeline-image {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-repeat: no-repeat;
+  background-size: 50px 50px;
+}
+
+.friendlist-image {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-repeat: no-repeat;
+  background-size: 30px 30px;
+  position: absolute;
+  top:0;
+  left:0;
+}
+
+.friend-link {
+  color: dodgerblue;
+  font-weight: 800;
+}
+
+.friend-link:hover {
+  cursor: pointer;
+}
+
+.timeline-header {
+  position: absolute;
+  top: 126px;
+  right: 40px;
+  font-size: 16px;
+  font-weight: 800;
+  color: white;
+  font-style: italic;
+}
+
+@media screen and (max-width: 800px) {
   .friend-panel {
     display: none;
   }
   #sidebar {
     display: block;
+    padding: 0 0 0 15px;
   }
   .conversation {
     width: 80vw;

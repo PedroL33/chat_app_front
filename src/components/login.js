@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { navInfo, navSignup, loginSuccess, setLoginErrors, clearLoginErrors } from '../actions/index';
 
+
 function Login() {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
@@ -25,9 +26,6 @@ function Login() {
             if(data.token) {
                 localStorage.setItem('token', data.token)
                 dispatch(loginSuccess());
-                dispatch(clearLoginErrors())
-                setUsername("")
-                setPassword("")
             }else {
                 dispatch(setLoginErrors(data))
             }

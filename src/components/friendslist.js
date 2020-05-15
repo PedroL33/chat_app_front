@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addFriends, setConversation, showConversation, logout } from '../actions';
+import { addFriends, setConversation, showConversation } from '../actions';
 import { CSSTransition, TransitionGroup} from 'react-transition-group';
 import { socket } from './dashboard';
 
@@ -10,28 +10,25 @@ function Friendslist() {
     const friendData = useSelector(state => state.friendData)
     const unreadData = useSelector(state => state.unreadData)
     const currentConversation = useSelector(state => state.currentConversation)
+    const show = useSelector(state => state.showConversation)
 
     function handleClick(friend) {
         socket.emit('mark_read', friend)
         dispatch(setConversation(friend))
         dispatch(showConversation())
-    }
-
-    function signout() {
-        dispatch(logout())
-        socket.disconnect();
-        localStorage.removeItem('token');
+        document.getElementsByClassName('bm-overlay')[0].click();
     }
 
     return (          
         <div className="friend-panel-item justify-content-between position-relative">
-            <span className="close-button" onClick={()=>signout()}>Logout</span>
-            <ul className="list-group list-group-flush overflow-auto">
+            <ul className="list-group list-group-flush">
                 <div className="card-header">Online</div>
                 <TransitionGroup>
                     {friendData.online && Object.keys(friendData.online).map((friend) => (
                         <CSSTransition timeout={300} classNames="friend-list-item" key={friend}>
-                            <li className={currentConversation===friend ? "friend-list-item list-group-item active" : "friend-list-item list-group-item"} onClick={() => handleClick(friend)}>
+                            <li className={currentConversation===friend && show ? "friend-list-item active" : "friend-list-item"} onClick={() => handleClick(friend)}
+                             data-toggle="tooltip" data-placement="right" title={`${friend} is ${friendData.online[friend].status}`}>
+                                <div className="friendlist-image" style={{backgroundImage: `url(${friendData.online[friend].picture})`}} ></div>
                                 <div>{friend}</div>
                                 {friendData.online[friend] && friendData.online[friend].isTyping ? <div>...</div>: null}
                                 {unreadData[friend] && <div className="unread bg-warning">{unreadData[friend]}</div>}
@@ -41,12 +38,12 @@ function Friendslist() {
                     )}
                 </TransitionGroup>
             </ul>
-            <ul className="list-group list-group-flush overflow-auto">
+            <ul className="list-group list-group-flush">
                 <div className="card-header">Offline</div>
                 <TransitionGroup>
                     {friendData.offline && Object.keys(friendData.offline).map((friend) => (
                         <CSSTransition timeout={300} classNames="friend-list-item" key={friend}>
-                            <li className="friend-list-item list-group-item">
+                            <li className="friend-list-item">
                                 <div>{friend}</div>    
                             </li>
                         </CSSTransition>
@@ -54,7 +51,7 @@ function Friendslist() {
                     )} 
                 </TransitionGroup>
             </ul>
-            <button className= "mx-auto mt-3 text-center btn btn-success" onClick={()=> dispatch(addFriends())}>
+            <button className= "mx-auto my-3 text-center btn btn-success" onClick={()=> dispatch(addFriends())}>
                 <i className="fas fa-user-plus"></i>
             </button>
         </div>

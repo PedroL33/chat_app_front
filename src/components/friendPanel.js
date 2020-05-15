@@ -11,6 +11,7 @@ function FriendPanel() {
     const dispatch = useDispatch()
     const conversationUser = useSelector(state => state.currentConversation)
     const currentUser = useSelector(state => state.currentUser)
+    const showConversation = useSelector(state => state.showConversation)
 
     useEffect(() => {
         socket.on('user_data', friends => {
@@ -22,7 +23,7 @@ function FriendPanel() {
         socket.on('message_data', (data) => {
             var unreadData = {};
             data.forEach(item => {
-                if(item.to === currentUser && !item.read) {
+                if(item.to === currentUser.username && !item.read) {
                     if(unreadData[item.from]) {
                         unreadData[item.from] = unreadData[item.from] + 1;
                     }else {
@@ -40,7 +41,7 @@ function FriendPanel() {
             socket.emit('get_user_data', localStorage.getItem('token'))
         })
         socket.on('message_update', (from) => {
-            if(from === conversationUser) {
+            if(from === conversationUser && showConversation) {
                 socket.emit('mark_read', from)
             }else {
                 socket.emit('get_message_data', localStorage.getItem('token'))

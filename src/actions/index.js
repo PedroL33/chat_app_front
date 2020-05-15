@@ -4,12 +4,6 @@ export const loginSuccess = () => {
     }
 }
 
-export const logout = () => {
-    return { 
-        type: "LOGOUT"
-    }
-}
-
 export const navLogin = () => {
     return {
         type: "NAV_LOGIN"
@@ -149,5 +143,24 @@ export const setNotTyping = (friend) => {
     return {
         type: "SET_NOT_TYPING",
         payload: friend
+    }
+}
+
+export const addEvent = (event) => {
+    return {
+        type: "ADD_EVENT",
+        payload: event
+    }
+}
+
+export const clearEvents = () => {
+    return {
+        type: "CLEAR_EVENTS"
+    }
+}
+
+export const userLogout = () => {
+    return {
+        type: "USER_LOGOUT"
     }
 }

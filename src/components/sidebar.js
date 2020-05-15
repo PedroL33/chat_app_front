@@ -7,9 +7,10 @@ import {useSelector} from 'react-redux';
 function Sidebar() {
 
     var nav = useSelector(state => state.friendPanel)
+    
     return (
         <div id="sidebar" >
-            <Menu pageWrapId={"content"} outerContainerId={"sidebar"} >
+            <Menu pageWrapId={"content"} outerContainerId={"sidebar"}>
                 { nav ==="add" ?  <Friendsadd /> : <Friendslist /> } 
             </Menu>
         </div>

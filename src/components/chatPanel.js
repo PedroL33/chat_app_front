@@ -1,6 +1,6 @@
 import React, {useState, useEffect, useRef, useCallback} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { hideConversation, clearConversation } from '../actions';
+import { hideConversation } from '../actions';
 import { SwitchTransition, CSSTransition} from 'react-transition-group';
 import { socket } from './dashboard';
 import moment from 'moment';
@@ -17,6 +17,7 @@ function ChatPanel() {
     const messageData = useSelector(state => state.messageData);
     const friendData = useSelector(state => state.friendData);
     const conversationUser = useSelector(state => state.currentConversation)
+    const friendInfo = friendData.online[conversationUser]
     const currentConversation = messageData.filter(item => item.to===conversationUser || item.from===conversationUser);
 
  
@@ -30,13 +31,12 @@ function ChatPanel() {
     })
 
     function handleClick() {
-      dispatch(clearConversation())
       dispatch(hideConversation())
     }
 
     function sendMessage() {
       var newMessage = {
-        from: currentUser,
+        from: currentUser.username,
         to: conversationUser,
         message: message,
         time: Date.now()
@@ -46,12 +46,12 @@ function ChatPanel() {
     }
 
     const stopTyping = useCallback(debounce(function() {
-      socket.emit('stopped_typing', {to: conversationUser, from: currentUser})
+      socket.emit('stopped_typing', {to: conversationUser, from: currentUser.username})
     }, 1000), [])
 
     function handleChange(e) {
       setMessage(e.target.value)
-      socket.emit('started_typing', {to: conversationUser, from: currentUser})
+      socket.emit('started_typing', {to: conversationUser, from: currentUser.username})
       stopTyping();
     }
 
@@ -65,16 +65,18 @@ function ChatPanel() {
     return (
       <SwitchTransition mode='out-in'>
         <CSSTransition key={conversationUser} timeout={300} classNames="conversation">
-
           <div className="conversation position-relative overflow-hidden">
               <span className="close-button" onClick={() => handleClick()}>
-                <i className="far fa-times-circle"></i>
+                <span aria-hidden="true">&times;</span>
               </span>
-              <div className="text-center">{conversationUser}</div>
+              <div>
+                <div className="timeline-image mx-auto" style={{backgroundImage: `url(${friendInfo.picture})`}} ></div>
+                <div>{conversationUser}</div>
+              </div>
               <div className="chat-display-wrapper">
                 <div ref={displayRef} className="chat-display">
                   {currentConversation.map(item => (
-                      <div className={item.to===currentUser ? "message-container to" : "message-container from"} key={item._id}>
+                      <div className={item.to===currentUser.username ? "message-container to" : "message-container from"} key={item._id}>
                         <div className="message-contents">
                           <div className="message">
                             <div>{item.message}</div>
@@ -87,7 +89,7 @@ function ChatPanel() {
                 </div>
                 {friendData.online[conversationUser] && friendData.online[conversationUser].isTyping ? <div className="is-typing">{conversationUser} is typing...</div>: null}
               </div>
-              <textarea ref={inputRef} className="mx-auto" onChange={(e)=> handleChange(e)} onKeyPress={(e)=> handleKeyPress(e)} placeholder="What on your mind..."></textarea>
+              <input type="text" ref={inputRef} className="form-control" onChange={(e)=> handleChange(e)} onKeyPress={(e)=> handleKeyPress(e)} placeholder="What on your mind..."></input>
           </div>
         </CSSTransition>
       </SwitchTransition>
