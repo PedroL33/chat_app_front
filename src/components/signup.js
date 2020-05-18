@@ -27,7 +27,7 @@ function Signup() {
         setConfirm("")
         setEmail("")
     }
-    //https://intense-journey-99404.herokuapp.com/signup
+
     function signup(e) {
         e.preventDefault()
         if(confirm !== password) {
@@ -35,7 +35,7 @@ function Signup() {
                 errors: ["Passwords do not match."]
             }))
         }else {
-            fetch('http://localhost:3000/signup', {
+            fetch('https://intense-journey-99404.herokuapp.com/signup', {
                 method: 'POST',
                 headers: {
                     "Content-Type": "application/json"

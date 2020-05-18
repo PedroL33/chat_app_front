@@ -8,10 +8,10 @@ function Login() {
     const [password, setPassword] = useState("")
     const dispatch = useDispatch();
     const errors = useSelector(state => state.loginErrors)
-    //https://intense-journey-99404.herokuapp.com/login
+
     function login(e) {
         e.preventDefault();
-        fetch('http://localhost:3000/login', {
+        fetch('https://intense-journey-99404.herokuapp.com/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
