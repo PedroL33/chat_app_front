@@ -19,6 +19,7 @@ function ChatPanel() {
     const conversationUser = useSelector(state => state.currentConversation)
     const friendInfo = friendData.online[conversationUser]
     const currentConversation = messageData.filter(item => item.to===conversationUser || item.from===conversationUser);
+
     useEffect(() => {
       if(didMountRef.current) {
         displayRef.current.scrollTop = displayRef.current.scrollHeight;
@@ -27,6 +28,12 @@ function ChatPanel() {
         didMountRef.current=true;
       }
     })
+
+    useEffect(() => {
+      if(!friendData[conversationUser]) {
+        dispatch(hideConversation())
+      }
+    }, [friendData])
 
     function handleClick() {
       dispatch(hideConversation())
