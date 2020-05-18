@@ -40,11 +40,10 @@ body {
 .friend-panel {
   width: 200px;
   height: 100%;
-  margin: 0 15px;
 }
 
 .main-panel {
-  width: 100%;
+  margin: auto;
 }
 
 .content {
@@ -141,12 +140,12 @@ body {
   color: white;
   padding: 4vh 2vw;
   text-align: center;
-  min-height: 75vh;
-  max-height: 100vh;
+  height: 90vh;
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
   border-radius: 30px;
-  width: 40vw;
+  width: 1000px;
 }
 
 .controls {
@@ -154,14 +153,22 @@ body {
   z-index: 2;
 }
 
-.close-button {
+.close-button, .close-chat-button {
   position: absolute;
-  top:0;
-  right:15px;
   font-size: 24px;
 }
 
-.close-button:hover {
+.close-button {
+  top:0;
+  right:15px;
+}
+
+.close-chat-button {
+  top: 15px;
+  right: 30px;
+}
+
+.close-button:hover, .close-chat-button:hover {
   cursor: pointer;
   color: red;
 }
@@ -181,6 +188,14 @@ body {
   scrollbar-width: thin; 
   scrollbar-color: hsl(210, 100%, 56%, 0.2) white;
   position: relative;
+  /* border-radius: 30px; */
+}
+
+.chat-input {
+  height: 20%;
+  border-radius: 30px;
+  padding: 3.5vh;
+  resize: none;
 }
 
 .form {
@@ -434,6 +449,16 @@ input[type="file"] {
   border-radius: 50%;
   background-repeat: no-repeat;
   background-size: 40px 40px;
+  position: relative;
+}
+
+.online-status {
+  width:10px;
+  height: 10px;
+  position: absolute;
+  border-radius: 50%;
+  top:-5px;
+  right: -5px;
 }
 
 .friendlist-image {
@@ -477,17 +502,15 @@ input[type="file"] {
   right: -10px;
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1200px) {
   .friend-panel {
     display: none;
   }
   #sidebar {
     display: block;
-    padding: 0 0 0 15px;
   }
   .conversation {
     width: 80vw;
-    height: 80vh;
     margin: auto;
   }
   .info {

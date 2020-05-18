@@ -17,7 +17,8 @@ function ChatPanel() {
     const messageData = useSelector(state => state.messageData);
     const friendData = useSelector(state => state.friendData);
     const conversationUser = useSelector(state => state.currentConversation)
-    const friendInfo = friendData.online[conversationUser]
+    const friendInfo = friendData.online[conversationUser] ? friendData.online[conversationUser]: friendData.offline[conversationUser]
+    const isOnline = friendData.online[conversationUser] ? true: false;
     const currentConversation = messageData.filter(item => item.to===conversationUser || item.from===conversationUser);
 
     useEffect(() => {
@@ -28,12 +29,6 @@ function ChatPanel() {
         didMountRef.current=true;
       }
     })
-
-    useEffect(() => {
-      if(!friendData[conversationUser]) {
-        dispatch(hideConversation())
-      }
-    }, [friendData])
 
     function handleClick() {
       dispatch(hideConversation())
@@ -71,12 +66,14 @@ function ChatPanel() {
       <SwitchTransition mode='out-in'>
         <CSSTransition key={conversationUser} timeout={300} classNames="conversation">
           <div className="conversation position-relative overflow-hidden">
-              <span className="close-button" onClick={() => handleClick()}>
+              <span className="close-chat-button" onClick={() => handleClick()}>
                 <span aria-hidden="true">&times;</span>
               </span>
               <div>
-                <div className="profile-image mx-auto" style={{backgroundImage: `url(${friendInfo.picture})`}} ></div>
-                <div className="mb-2">{conversationUser}</div>
+                <div className="profile-image mx-auto" style={{backgroundImage: `url(${friendInfo.picture})`}} >
+                  <div className={isOnline ? "online-status bg-success": "online-status bg-danger"}></div>
+                </div>
+                <div>{conversationUser}</div>
               </div>
               <div className="chat-display-wrapper">
                 <div ref={displayRef} className="chat-display">
@@ -94,7 +91,7 @@ function ChatPanel() {
                 </div>
                 {friendData.online[conversationUser] && friendData.online[conversationUser].isTyping ? <div className="is-typing">{conversationUser} is typing...</div>: null}
               </div>
-              <input type="text" ref={inputRef} className="form-control" onChange={(e)=> handleChange(e)} onKeyPress={(e)=> handleKeyPress(e)} placeholder="What on your mind..."></input>
+              <textarea type="text" ref={inputRef} className="chat-input" onChange={(e)=> handleChange(e)} onKeyPress={(e)=> handleKeyPress(e)} placeholder="What on your mind..."></textarea>
           </div>
         </CSSTransition>
       </SwitchTransition>

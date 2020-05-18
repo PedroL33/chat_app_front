@@ -44,7 +44,8 @@ function Friendslist() {
                 <TransitionGroup>
                     {friendData.offline && Object.keys(friendData.offline).map((friend) => (
                         <CSSTransition timeout={300} classNames="friend-list-item" key={friend}>
-                            <li className="friend-list-item">
+                            <li className={currentConversation===friend && show ? "friend-list-item active" : "friend-list-item"} onClick={() => handleClick(friend)}
+                             data-toggle="tooltip" data-placement="right" title={`${friend} is offline.`}>
                                 <div>{friend}</div>    
                             </li>
                         </CSSTransition>

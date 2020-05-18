@@ -10,8 +10,8 @@ function Dashboard() {
 
     const dispatch = useDispatch();
 
-    socket = io('https://intense-journey-99404.herokuapp.com/', {query: {token: localStorage.getItem('token')}});
-    
+    socket = io('http://localhost:3000', {query: {token: localStorage.getItem('token')}});
+    // https://intense-journey-99404.herokuapp.com/
     useEffect(() => {
         socket.on('connect', () => {
             console.log(`${socket.id} had connected.`)
@@ -55,6 +55,7 @@ function Dashboard() {
             socket.off('logged_in')
             socket.off('update_complete')
             socket.off('timeline_update')
+            socket.off('current_user_data')
         }
     })
 
