@@ -1,5 +1,6 @@
 body {
   font-size: 2vh;
+  font-family: 'Oxygen', sans-serif;
 }
 
 #root {
@@ -9,6 +10,31 @@ body {
 
 .btn {
   font-size: 10px;
+}
+
+.info {
+  width: 100vw;
+  height: 100vh;
+  background-image: url("http://www.allwhitebackground.com/images/7/Blue-Background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: right top;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 50%;
+  color: white;
+  font-size: 36px;
+}
+
+.info-buttons button {
+  width: 20%;
+  font-size: 24px;
+  margin: 20px;
+}
+
+.main-title {
+  font-size: 64px;
 }
 
 .friend-panel {
@@ -120,6 +146,7 @@ body {
   display: flex;
   flex-direction: column;
   border-radius: 30px;
+  width: 40vw;
 }
 
 .controls {
@@ -129,8 +156,8 @@ body {
 
 .close-button {
   position: absolute;
-  top:2%;
-  right:5%;
+  top:0;
+  right:15px;
   font-size: 24px;
 }
 
@@ -150,14 +177,14 @@ body {
   margin: 10px 0 0 0;
   display: flex;
   flex-direction: column;
-  overflow-y: scroll;
+  overflow-y: auto;
   scrollbar-width: thin; 
   scrollbar-color: hsl(210, 100%, 56%, 0.2) white;
   position: relative;
 }
 
 .form {
-  margin: 15% auto;
+  margin: 25vh auto;
   width: 50%;
   height: 50%;
   border: 1px solid rgb(211, 211, 211);
@@ -303,8 +330,8 @@ body {
   background-repeat: no-repeat;
   background-size: 200px 200px;
   position: absolute;
-  top:-100px;
-  left:-100px;
+  top:-75px;
+  left:-75px;
   margin: auto;
 }
 
@@ -323,8 +350,11 @@ input[type="file"] {
 .file-upload {
   font-size: 24px;
   color: rgb(0, 0, 0, 0.5);
-  margin:0;
-  padding:0;
+}
+
+.file-upload:hover {
+  cursor: pointer;
+  color: rgba(42, 151, 42);
 }
 
 .profile-picture-controls {
@@ -357,10 +387,12 @@ input[type="file"] {
   align-items: center;
   justify-content: center;
   font-size: 16px;
-  padding: 12px 36px 12px 137px;
+  padding: 12px 36px 0 137px;
   position: absolute;
   z-index: 1;
   color: white;
+  word-break: break-all;
+  font-weight: 800;
 }
 
 .timeline-container {
@@ -380,21 +412,28 @@ input[type="file"] {
   background-color: white;
   border-radius: 25px; 
   padding: 20px; 
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .timeline-event {
-  height: 50px;
+  min-height: 50px;
   display:flex;
   align-items: center;
+  word-break: break-all;
 }
 
-.timeline-image {
-  width: 50px;
-  height: 50px;
+.timeline-event-time {
+  color: grey;
+  font-size: 1.5vh;
+}
+
+.profile-image {
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   background-repeat: no-repeat;
-  background-size: 50px 50px;
+  background-size: 40px 40px;
 }
 
 .friendlist-image {
@@ -411,6 +450,8 @@ input[type="file"] {
 .friend-link {
   color: dodgerblue;
   font-weight: 800;
+  display: inline;
+  padding: 0 5px;
 }
 
 .friend-link:hover {
@@ -427,7 +468,16 @@ input[type="file"] {
   font-style: italic;
 }
 
-@media screen and (max-width: 800px) {
+.request-data-notification {
+  position: absolute;
+  width: 20px;
+  height:20px;
+  border-radius: 50%;
+  top: -10px;
+  right: -10px;
+}
+
+@media screen and (max-width: 1000px) {
   .friend-panel {
     display: none;
   }
@@ -439,5 +489,8 @@ input[type="file"] {
     width: 80vw;
     height: 80vh;
     margin: auto;
+  }
+  .info {
+    padding:0;
   }
 }

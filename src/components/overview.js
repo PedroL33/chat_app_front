@@ -36,17 +36,17 @@ function Overview() {
                 <div className="profile-portrait" style={style}>
                     <div className="profile-picture-controls">
                         {file==="" ? 
-                        <label className="file-upload">
+                        <label className="file-upload" data-toggle="tooltip" data-placement="top" title="Upload a Photo">
                             <input type="file" onChange={(e) => setFile(e.target.files[0])}></input>
                             <i className="fas fa-portrait"></i> 
                         </label>:
                         <div className="d-flex flex-row">
-                            <div className="mr-1">
-                                <i onClick={() => savePhoto()} className="fas fa-check"></i>
-                            </div> 
-                            <div>
-                                <i onClick={() => setFile("")} className="fas fa-times"></i>
-                            </div>
+                            <button className="btn-sm btn-success" onClick={() => savePhoto()} data-toggle="tooltip" data-placement="top" title="Save">
+                                <i className="fas fa-check"></i>
+                            </button> 
+                            <button className="btn-sm btn-danger" onClick={() => setFile("")} data-toggle="tooltip" data-placement="top" title="Clear">
+                                <i className="fas fa-times"></i>
+                            </button>
                         </div>}
                     </div>
                 </div>
@@ -54,16 +54,16 @@ function Overview() {
                 <div className="status">
                     <div>
                         Currently {currentUser.status}. &nbsp; 
-                        <button onClick={()=> clearForm()} type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModalCenter">
+                        <button onClick={()=> clearForm()} type="button" className="btn btn-success" data-toggle="modal" data-target="#update-status">
                             Update
                         </button>
                     </div>
                 </div>
-                <div class="modal fade" id="exampleModalCenter" tabIndex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal fade" id="update-status" tabIndex="-1" role="dialog" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLongTitle">Let your friends know what you are doing!</h5>
+                                <h5 class="modal-title">Let your friends know what you are doing!</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>

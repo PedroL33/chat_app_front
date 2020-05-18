@@ -19,8 +19,6 @@ function ChatPanel() {
     const conversationUser = useSelector(state => state.currentConversation)
     const friendInfo = friendData.online[conversationUser]
     const currentConversation = messageData.filter(item => item.to===conversationUser || item.from===conversationUser);
-
- 
     useEffect(() => {
       if(didMountRef.current) {
         displayRef.current.scrollTop = displayRef.current.scrollHeight;
@@ -70,8 +68,8 @@ function ChatPanel() {
                 <span aria-hidden="true">&times;</span>
               </span>
               <div>
-                <div className="timeline-image mx-auto" style={{backgroundImage: `url(${friendInfo.picture})`}} ></div>
-                <div>{conversationUser}</div>
+                <div className="profile-image mx-auto" style={{backgroundImage: `url(${friendInfo.picture})`}} ></div>
+                <div className="mb-2">{conversationUser}</div>
               </div>
               <div className="chat-display-wrapper">
                 <div ref={displayRef} className="chat-display">

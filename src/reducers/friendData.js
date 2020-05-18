@@ -3,9 +3,9 @@ const friendDataReducer = (state={}, action) => {
         case "SET_FRIEND_DATA":
             return action.payload
         case "SET_IS_TYPING":
-            return {...state, online: {...state.online, [action.payload]: {isTyping: true}}}
+            return {...state, online: {...state.online, [action.payload]: {...state.online[action.payload], isTyping: true}}}
         case "SET_NOT_TYPING":
-            return {...state, online: {...state.online, [action.payload]: {isTyping: false}}}
+            return {...state, online: {...state.online, [action.payload]: {...state.online[action.payload], isTyping: false}}}
         default:
             return state
     }

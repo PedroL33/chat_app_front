@@ -44,7 +44,7 @@ function Friendsadd() {
                             :<div>
                                 <div className="add-input-container">
                                     <input className="form-control" placeholder="Username..." type="text" onChange={(e) => setAddFriend(e.target.value)}></input>
-                                    <button className="btn btn-success btn-sm add-button" onClick={() => socket.emit('send_request', addFriend)}>
+                                    <button className="btn btn-success btn-sm add-button" onClick={() => socket.emit('send_request', addFriend)} data-toggle="tooltip" data-placement="top" title="Send Request">
                                         <i className="fas fa-plus"></i>
                                     </button> 
                                 </div>
@@ -59,7 +59,14 @@ function Friendsadd() {
                             <CSSTransition timeout={300} classNames="friend-list-item" key={item}>
                                 <li className="friend-list-item">
                                     <div className="mx-auto">{item}</div>   
-                                    <button className="btn btn-success btn-sm mx-auto" onClick={() => socket.emit('accept_request', item)}><i className="far fa-check-circle"></i></button> 
+                                    <div>
+                                        <button className="btn btn-success btn-sm mr-auto" onClick={() => socket.emit('accept_request', item)} data-toggle="tooltip" data-placement="top" title="Accept">
+                                            <i className="fas fa-check"></i>
+                                        </button> 
+                                        <button className="btn btn-danger btn-sm ml-auto" onClick={() => socket.emit('decline_request', item)} data-toggle="tooltip" data-placement="top" title="Decline">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button> 
+                                    </div>
                                 </li>
                             </CSSTransition>
                             )

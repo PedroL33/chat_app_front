@@ -9,6 +9,7 @@ function Friendslist() {
     const dispatch = useDispatch()
     const friendData = useSelector(state => state.friendData)
     const unreadData = useSelector(state => state.unreadData)
+    const requestData = useSelector(state => state.requestData)
     const currentConversation = useSelector(state => state.currentConversation)
     const show = useSelector(state => state.showConversation)
 
@@ -51,8 +52,9 @@ function Friendslist() {
                     )} 
                 </TransitionGroup>
             </ul>
-            <button className= "mx-auto my-3 text-center btn btn-success" onClick={()=> dispatch(addFriends())}>
+            <button className= "mx-auto my-3 text-center btn btn-success position-relative" onClick={()=> dispatch(addFriends())} data-toggle="tooltip" data-placement="top" title="Add friends!">
                 <i className="fas fa-user-plus"></i>
+                {requestData.length > 0 && <div className="request-data-notification bg-danger">{requestData.length}</div>}
             </button>
         </div>
     )

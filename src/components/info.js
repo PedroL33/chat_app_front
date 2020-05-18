@@ -12,10 +12,16 @@ function Info() {
     }
 
     return (
-        <div>
-            Info
-            <button onClick={e => handleClick(e, navLogin())}>Login</button>
-            <button onClick={e => handleClick(e, navSignup())}>Signup</button>
+        <div className="info">
+            <div className="text-center">
+                <h1 className="main-title">Welcome to Chat App</h1>
+                <p>A simple place to connect with your friends.</p>
+                <hr />
+                <div className="info-buttons">
+                    <button className="btn btn-success" onClick={e => handleClick(e, navLogin())}>Login</button>
+                    <button className="btn btn-primary" onClick={e => handleClick(e, navSignup())}>Signup</button>
+                </div>
+            </div>
         </div>
     )
 }

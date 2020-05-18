@@ -10,7 +10,7 @@ function Dashboard() {
 
     const dispatch = useDispatch();
 
-    socket = io('http://localhost:3000', {query: {token: localStorage.getItem('token')}});
+    socket = io('https://intense-journey-99404.herokuapp.com/', {query: {token: localStorage.getItem('token')}});
     
     useEffect(() => {
         socket.on('connect', () => {

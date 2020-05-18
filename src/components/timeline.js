@@ -29,13 +29,13 @@ function Timeline() {
             <div className="timeline" ref={displayRef}>
                 {timelineEvents.map(item => (
                     <div className="timeline-event">
-                        {
-                            item.type==="online" ? <div className="d-flex"><div className="friend-link" onClick={()=> handleClick(item.username)}>{item.username}&nbsp;</div> is now online.</div>:
-                            item.type==="offline" ? <div className="d-flex"><div className="friend-link" onClick={()=> handleClick(item.username)}>{item.username}&nbsp;</div> is now offline.</div>:
-                            item.type==="picture" ? <div className="d-flex"><div className="friend-link" onClick={()=> handleClick(item.username)}>{item.username}&nbsp;</div> changed their profile picture.</div>:
-                            <div className="d-flex"><div className="friend-link" onClick={()=> handleClick(item.username)}>{item.username}&nbsp;</div> is now {item.status}.</div>
-                        }
-                        {item.type==="picture" && <div className="timeline-image" style={{backgroundImage: `url(${item.url})`}} ></div>}
+                        <em className="friend-link" onClick={()=> handleClick(item.username)}>
+                            {item.username}
+                        </em>
+                        &nbsp;{item.message}&nbsp; 
+                        <time className="timeline-event-time">
+                            {item.time}
+                        </time>
                     </div>
                     )
                 )}
