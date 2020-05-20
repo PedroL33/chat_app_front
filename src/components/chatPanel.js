@@ -58,7 +58,10 @@ function ChatPanel() {
     function handleKeyPress(e) {
       if(e.which===13) {
         e.preventDefault();
-        sendMessage();
+        if(message.length) {
+          sendMessage();
+          setMessage("")
+        }
       }
     }
 
