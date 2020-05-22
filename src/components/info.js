@@ -12,7 +12,7 @@ function Info() {
     }
 
     return (
-        <div className="info">
+        <div className="info" style={{backgroundImage: `url(${window.location.origin}/images/front-page.jpg)`}}>
             <div className="text-center">
                 <h1 className="main-title">Welcome to Chat App</h1>
                 <p>A simple place to connect with your friends.</p>
