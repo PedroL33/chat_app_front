@@ -19,7 +19,7 @@ function MainPanel() {
 
     return (
         <div className="row main-panel">
-            <span className="close-button" onClick={()=>signout()} data-toggle="tooltip" data-placement="top" title="Logout">
+            <span className="logout" onClick={()=>signout()} data-toggle="tooltip" data-placement="top" title="Logout">
                 <i className="fas fa-power-off"></i>
             </span>
             <Sidebar />
