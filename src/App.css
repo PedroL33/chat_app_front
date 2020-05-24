@@ -176,9 +176,9 @@ body {
 }
 
 .close-chat-button {
-  top: 75px;
+  top: 7%;
   right: 30px;
-  font-size: 48px;
+  font-size: 3vw;
 }
 
 .close-button:hover, .close-chat-button:hover {
