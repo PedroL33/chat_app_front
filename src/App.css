@@ -5,7 +5,14 @@ body {
 
 #root {
   width: 100%;
+  height: 100vh;
   margin: auto;
+}
+
+.app-container {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
 }
 
 .btn {
@@ -16,6 +23,7 @@ body {
   position: absolute;
   top: 20px;
   right: 20px;
+  color: white;
   z-index: 2;
 }
 
@@ -24,27 +32,57 @@ body {
   cursor: pointer;
 }
 
+/* landing page */
 .info {
   width: 100vw;
   height: 100vh;
   background-repeat: no-repeat;
-  background-size: cover;
   background-position: right top;
   display: flex;
+  justify-content: center;
+  color: white;
+  font-size: 24px;
+  background-position: 100% 100%;
+  text-align: center;
+}
+
+.landing-button {
+  padding: 5px 15px;
+  border-radius: 30px;
+  border: 1px solid #005d8c;
+  background-color: white;
+  color: #005d8c;
+}
+
+.landing-button:hover {
+  background-color: #005d8c;
+  color: white;
+}
+
+.info-welcome {
+  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding-left: 50%;
-  color: white;
-  font-size: 36px;
+  background-color: white;
+  color: #005d8c;
+  width: 75%;
+}
+
+.info-side {
+  width: 25%;
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  background-size: 100vw 100vh;
 }
 
 .info-buttons button {
-  font-size: 24px;
+  font-size: 20px;
   margin: 20px;
 }
 
 .main-title {
-  font-size: 64px;
+  font-size: 36px;
 }
 
 .friend-panel {
@@ -53,7 +91,8 @@ body {
 }
 
 .main-panel {
-  margin: auto;
+  width: 100%;
+  margin: 0 !important;
 }
 
 .content {
@@ -65,7 +104,7 @@ body {
 }
 
 .friend-panel-item {
-  background-color: dodgerblue;
+  background-color: #16b1ff;
   color: white;
   height: 100vh;
   width: 100%;
@@ -74,16 +113,23 @@ body {
   flex-direction: column;
   justify-content: space-around;
   position: relative;
-  overflow: auto;
 }
 
-.card-header, .add-input-container, .request-message-container {
-  width: 90%;
-  font-size: 12px;
-  margin: 10px;
+.card-header, .add-input-container {
+  width: 100%;
+  font-size: 24px;
   overflow: hidden;
-  text-align:center;
+  text-align:left;
+  text-indent: 12px;
   position: relative;
+}
+
+.request-message-container {
+  width: 100%;
+}
+
+.card-header {
+  font-weight: 800;
 }
 
 .add-button {
@@ -96,7 +142,7 @@ body {
 
 .friend-list-item.active {
   background-color: white;
-  background-color: rgba(216, 204, 204, 0.2);
+  color: #005d8c;
   border-radius: 100px;
 }
 
@@ -104,10 +150,12 @@ body {
   height: 30px;
   padding: 15px;
   margin: 5px 20px;
-  background-color: dodgerblue;
+  background-color: #16b1ff;
   display:flex;
   align-items:center;
-  justify-content: center;
+  font-weight: 800;
+  font-size: 18px;
+  text-indent: 24px;
   border:none;
   position: relative;
 }
@@ -147,7 +195,7 @@ body {
 }
 
 .conversation {
-  background-color: dodgerblue;
+  background-color: #16b1ff;
   color: white;
   padding: 4vh 2vw;
   text-align: center;
@@ -176,9 +224,9 @@ body {
 }
 
 .close-chat-button {
-  top: 7%;
-  right: 30px;
-  font-size: 3vw;
+  top: 5%;
+  right: 5%;
+  font-size: 48px;
 }
 
 .close-button:hover, .close-chat-button:hover {
@@ -193,7 +241,6 @@ body {
 .chat-display {
   width: 100%;
   height: 50vh;
-  background-color: white;
   margin: 10px 0 0 0;
   display: flex;
   flex-direction: column;
@@ -201,6 +248,7 @@ body {
   scrollbar-width: thin; 
   scrollbar-color: hsl(210, 100%, 56%, 0.2) white;
   position: relative;
+  background-color: white;
 }
 
 .chat-input {
@@ -208,16 +256,18 @@ body {
   border-radius: 30px;
   padding: 3.5vh;
   resize: none;
+  background-color: white;
 }
 
 .form {
-  margin: 25vh auto;
+  margin: auto;
   width: 50%;
-  height: 50%;
   border: 1px solid rgb(211, 211, 211);
   padding: 8vh 8vw;
   border-radius: 2vh; 
   position:relative;
+  background: white;
+  color: #005d8c;
 }
 
 .form-links {
@@ -261,13 +311,14 @@ body {
   position:relative;
   text-align: center;
   margin: 2vh;
-  border-radius: 2vh;
+  padding: 20px;
+  border-radius: 20px;
   background-color: rgb(124, 122, 122, .1);
 }
 
 .message-container {
   padding: 1.5vh;
-  color: dodgerblue;
+  color: #005d8c;
   width: 70%;
 }
 
@@ -277,7 +328,7 @@ body {
 }
 
 .message-contents {
-  color: dodgerblue;
+  color: #005d8c;
   padding: .5vw 1.5vw;
   border-radius: 1.5vw;
   display: inline-block;
@@ -310,16 +361,15 @@ body {
 
 .unread {
   border-radius: 50%;
-  width: 20px;
-  height: 20px;
-  color: white;
+  width: 25px;
+  height: 25px;
+  color: #005d8c;
   display:flex;
   align-items: center;
   justify-content: center;
-  margin-left: auto;
   position: absolute;
-  top:.75vh;
-  right:.75vh;
+  right:0;
+  text-indent: 0;
 }
 
 .chat-display-wrapper {
@@ -367,7 +417,7 @@ body {
   top: -54px;
   left: 135px;
   font-size: 48px;
-  color: dodgerblue;
+  color: white;
 }
 
 input[type="file"] {
@@ -397,7 +447,7 @@ input[type="file"] {
   margin: auto;
   position: relative;
   border-radius: 20px;
-  background-color: rgb(30, 144, 255, 0.8);
+  background-color: #16b1ff;
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -487,7 +537,7 @@ input[type="file"] {
 }
 
 .friend-link {
-  color: dodgerblue;
+  color: #16b1ff;
   font-weight: 800;
   display: inline;
   padding: 0 5px;
@@ -527,8 +577,11 @@ input[type="file"] {
     width: 80vw;
     margin: auto;
   }
-  .info {
-    padding:10px;
+  .info-welcome {
+    width: 100%;
+  }
+  .info-side {
+    width:0;
   }
   .form {
     width: 90%;

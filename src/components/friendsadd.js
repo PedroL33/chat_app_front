@@ -37,7 +37,7 @@ function Friendsadd() {
                     <SwitchTransition mode='out-in'>
                         <CSSTransition key={show} timeout={300} classNames='request-panel-item'>
                             { show ?  <div className="request-message-container">
-                                {requestMessage.type==='success' ? <i className="far fa-check-circle text-success"></i>: <i class="fas fa-exclamation-triangle text-warning"></i>}
+                                {requestMessage.type==='success' ? <i className="far fa-check-circle mx-auto"></i>: <i class="fas fa-exclamation-triangle"></i>}
                                 <div className="p-2">{requestMessage.msg}</div>
                                 <button className="btn btn-success btn-sm" onClick={()=> dispatch(hideRequestMessage())}>Ok</button>
                             </div>

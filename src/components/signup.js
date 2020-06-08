@@ -83,8 +83,8 @@ function Signup() {
                 <button className="btn btn-success" onClick={(e) => signup(e)}>Signup</button>
             </div>
             <div className="form-links">
-                <div className="form-link" onClick={(e) => handleClick(e, navLogin())}>Login</div>
                 <div className="form-link" onClick={(e) => handleClick(e, navInfo())}>About</div>
+                <div className="form-link" onClick={(e) => handleClick(e, navLogin())}>Login</div>
             </div>
         </div>
     )

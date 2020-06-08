@@ -46,7 +46,8 @@ function Friendslist() {
                         <CSSTransition timeout={300} classNames="friend-list-item" key={friend}>
                             <li className={currentConversation===friend && show ? "friend-list-item active" : "friend-list-item"} onClick={() => handleClick(friend)}
                              data-toggle="tooltip" data-placement="right" title={`${friend} is offline.`}>
-                                <div>{friend}</div>    
+                                <div>{friend}</div>  
+                                {unreadData[friend] && <div className="unread bg-warning">{unreadData[friend]}</div>}  
                             </li>
                         </CSSTransition>
                         )

@@ -70,7 +70,7 @@ function ChatPanel() {
         <CSSTransition key={conversationUser} timeout={300} classNames="conversation">
           <div className="conversation position-relative overflow-hidden">
               <span className="close-chat-button" onClick={() => handleClick()} data-toggle="tooltip" data-placement="right" title="Back to timeline.">
-                <i class="fas fa-long-arrow-alt-left"></i>
+                <i class="fas fa-arrow-circle-left"></i>
               </span>
               <div>
                 <div className="profile-image mx-auto" style={{backgroundImage: `url(${friendInfo.picture})`}} >

@@ -12,15 +12,18 @@ function Info() {
     }
 
     return (
-        <div className="info" style={{backgroundImage: `url(https://chatbucket11.s3-us-west-2.amazonaws.com/bucketFolder/front-page.jpg)`}}>
-            <div className="text-center">
+        <div className="info">
+            <div className="info-welcome">
                 <h1 className="main-title">Welcome to Chat App</h1>
-                <p>A simple place to connect with your friends.</p>
+                <p>Connect with your friends in real time.</p>
                 <hr />
                 <div className="info-buttons">
-                    <button className="btn btn-success" onClick={e => handleClick(e, navLogin())}>Login</button>
-                    <button className="btn btn-primary" onClick={e => handleClick(e, navSignup())}>Signup</button>
+                    <button className="landing-button" onClick={e => handleClick(e, navLogin())}>Login</button>
+                    <button className="landing-button" onClick={e => handleClick(e, navSignup())}>Signup</button>
                 </div>
+            </div>
+            <div class="info-side" style={{backgroundImage: `url(${window.location}images/background.jpg)`}}>
+
             </div>
         </div>
     )
