@@ -125,6 +125,19 @@ export const setMessageData = (data) => {
     }
 }
 
+export const addMessage = (data) => {
+  return {
+    type: "ADD_MESSAGE",
+    payload: data
+  }
+}
+
+export const clearMessages = () => {
+  return {
+    type: "CLEAR_MESSAGES"
+  }
+}
+
 export const setUnreadData = (data) => {
     return {
         type: "SET_UNREAD_DATA", 
@@ -164,3 +177,4 @@ export const userLogout = () => {
         type: "USER_LOGOUT"
     }
 }
+

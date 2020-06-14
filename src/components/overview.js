@@ -51,13 +51,13 @@ function Overview() {
                     </div>
                 </div>
                 <div className="username">{currentUser.username}</div>
-                <div className="status">
-                    <div>
+                <div className="status-container">
+                  <div className="status">
                         Currently {currentUser.status}. &nbsp; 
                         <button onClick={()=> clearForm()} type="button" className="update-status-button" data-toggle="modal" data-target="#update-status">
                           <i className="fas fa-pen"></i>
                         </button>
-                    </div>
+                  </div>
                 </div>
                 <div class="modal fade" id="update-status" tabIndex="-1" role="dialog" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">
