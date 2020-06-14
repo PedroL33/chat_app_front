@@ -68,7 +68,7 @@ function ChatPanel() {
     return (
       <SwitchTransition mode='out-in'>
         <CSSTransition key={conversationUser} timeout={300} classNames="conversation">
-          <div className="conversation position-relative overflow-hidden">
+          <div className="conversation position-relative shadow">
               <span className="close-chat-button" onClick={() => handleClick()} data-toggle="tooltip" data-placement="right" title="Back to timeline.">
                 <i class="fas fa-arrow-circle-left"></i>
               </span>
@@ -76,7 +76,7 @@ function ChatPanel() {
                 <div className="profile-image mx-auto" style={{backgroundImage: `url(${friendInfo.picture})`}} >
                   <div className={isOnline ? "online-status bg-success": "online-status bg-danger"}></div>
                 </div>
-                <div>{conversationUser}</div>
+                <div className="conversation-name">{conversationUser}</div>
               </div>
               <div className="chat-display-wrapper">
                 <div ref={displayRef} className="chat-display">
@@ -94,7 +94,8 @@ function ChatPanel() {
                 </div>
                 {friendData.online[conversationUser] && friendData.online[conversationUser].isTyping ? <div className="is-typing">{conversationUser} is typing...</div>: null}
               </div>
-              <textarea type="text" ref={inputRef} className="chat-input" onChange={(e)=> handleChange(e)} onKeyPress={(e)=> handleKeyPress(e)} placeholder="What on your mind..."></textarea>
+              <textarea ref={inputRef} className="chat-input" onChange={(e)=> handleChange(e)} onKeyPress={(e)=> handleKeyPress(e)} placeholder="What on your mind..."></textarea>
+              <input type="text" ref={inputRef} className="responsive-input form-control" onChange={(e)=> handleChange(e)} onKeyPress={(e)=> handleKeyPress(e)} placeholder="What on your mind..." />
           </div>
         </CSSTransition>
       </SwitchTransition>

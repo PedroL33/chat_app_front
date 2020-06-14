@@ -1,30 +1,42 @@
 body {
-  font-size: 2vh;
-  font-family: 'Oxygen', sans-serif;
+  font-size: 16px;
+  font-family: 'Quicksand', sans-serif;
+  color: rgb(109, 109, 109);
+  height: 100vh;
+  width: 100%;
 }
 
 #root {
   width: 100%;
-  height: 100vh;
+  height: 100%;
   margin: auto;
 }
 
 .app-container {
-  height: 100vh;
-  width: 100vw;
+  width: 100%;
+  height: 100%;
   display: flex;
+  background-color: rgb(223, 223, 223);
 }
 
 .btn {
-  font-size: 10px;
+  font-size: 16px;
+}
+
+.update-status-button {
+  background-color: white;
+  color: green;
+  border: none;
+  padding: 0;
 }
 
 .logout {
   position: absolute;
-  top: 20px;
-  right: 20px;
-  color: white;
-  z-index: 2;
+  top: 19px;
+  right: 24px;
+  font-size: 24px;
+  color: black;
+  z-index: 1;
 }
 
 .logout:hover {
@@ -73,7 +85,6 @@ body {
   width: 25%;
   background-repeat: no-repeat;
   background-position: 0 0;
-  background-size: 100vw 100vh;
 }
 
 .info-buttons button {
@@ -98,15 +109,14 @@ body {
 .content {
   margin: auto;
   width: 80%;
-  min-height: 100vh;
+  height: 100%;
   display: flex;
   align-items: center;
 }
 
 .friend-panel-item {
-  background-color: #16b1ff;
-  color: white;
-  height: 100vh;
+  background-color: rgb(240, 236, 236);
+  height: 100%;
   width: 100%;
   border: none;
   display:flex;
@@ -122,6 +132,7 @@ body {
   text-align:left;
   text-indent: 12px;
   position: relative;
+  background-color: rgb(245, 245, 245);
 }
 
 .request-message-container {
@@ -140,20 +151,23 @@ body {
   width: 15%;
 }
 
+.add-friend-form {
+  height: 100%;
+}
+
 .friend-list-item.active {
-  background-color: white;
-  color: #005d8c;
-  border-radius: 100px;
+  background-color: rgb(224, 223, 223);
+  color: rgb(0, 0, 0);
+  font-weight: 800;
+  border-left: 10px solid rgb(19, 146, 19);
 }
 
 .friend-list-item {
   height: 30px;
-  padding: 15px;
-  margin: 5px 20px;
-  background-color: #16b1ff;
+  padding: 30px;
+  background-color: rgb(243, 243, 243);
   display:flex;
   align-items:center;
-  font-weight: 800;
   font-size: 18px;
   text-indent: 24px;
   border:none;
@@ -163,8 +177,6 @@ body {
 .friend-list-item:hover {
   cursor: pointer;
   background-color: rgba(216, 204, 204, 0.2);
-  color: white;
-  border-radius: 100px;
 }
 
 .tooltip {
@@ -195,17 +207,23 @@ body {
 }
 
 .conversation {
-  background-color: #16b1ff;
-  color: white;
-  padding: 4vh 2vw;
+  background-color: white;
+  padding: 20px;
   text-align: center;
-  height: 90vh;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: center;
   border-radius: 30px;
-  width: 50%;
+  width: 40%;
+  height: 90%;
   margin: auto;
+  z-index: 2;
+}
+
+.conversation-name {
+  margin-top: 5px;
+  font-size: 20px;
+  font-weight: 800;
 }
 
 .controls {
@@ -224,9 +242,9 @@ body {
 }
 
 .close-chat-button {
-  top: 5%;
-  right: 5%;
-  font-size: 48px;
+  top: 20px;
+  right: 20px;
+  font-size: 24px;
 }
 
 .close-button:hover, .close-chat-button:hover {
@@ -234,37 +252,43 @@ body {
   color: red;
 }
 
-.add-friend-form {
-  height: 100vh;
-}
-
 .chat-display {
   width: 100%;
-  height: 50vh;
-  margin: 10px 0 0 0;
+  height: 100%;
   display: flex;
   flex-direction: column;
   overflow-y: auto;
   scrollbar-width: thin; 
-  scrollbar-color: hsl(210, 100%, 56%, 0.2) white;
+  scrollbar-color: rgb(187, 187, 187) rgb(228, 225, 225);
   position: relative;
-  background-color: white;
+  background-color: rgb(228, 225, 225);
+}
+
+.chat-display-wrapper {
+  position: relative;
+  margin: 20px 0;
+  height: 60%;
 }
 
 .chat-input {
   height: 20%;
-  border-radius: 30px;
-  padding: 3.5vh;
+  border-radius: 20px;
+  border: none;
+  padding: 30px;
   resize: none;
-  background-color: white;
+  background-color: rgb(228, 225, 225);
+}
+
+.responsive-input {
+  display:none;
 }
 
 .form {
   margin: auto;
-  width: 50%;
+  width: 25%;
   border: 1px solid rgb(211, 211, 211);
-  padding: 8vh 8vw;
-  border-radius: 2vh; 
+  padding: 70px 40px;
+  border-radius: 20px; 
   position:relative;
   background: white;
   color: #005d8c;
@@ -273,21 +297,21 @@ body {
 .form-links {
   display: flex;
   position: absolute;
-  bottom: 1vh;
-  right: 1vh;
+  bottom: 10px;
+  right: 10px;
 }
 
 .form-link {
   cursor: pointer;
   color: dodgerblue;
-  padding: 1vh;
+  padding: 10px;
 }
 
 .form-title {
   position: absolute;
-  font-size: 3vh;
-  top:3vw;
-  left:3vw;
+  font-size: 30px;
+  top:20px;
+  left:20px;
 }
 
 .form-error {
@@ -310,14 +334,14 @@ body {
 .request-message-container {
   position:relative;
   text-align: center;
-  margin: 2vh;
+  margin: 20px;
   padding: 20px;
   border-radius: 20px;
   background-color: rgb(124, 122, 122, .1);
 }
 
 .message-container {
-  padding: 1.5vh;
+  padding: 15px;
   color: #005d8c;
   width: 70%;
 }
@@ -372,10 +396,6 @@ body {
   text-indent: 0;
 }
 
-.chat-display-wrapper {
-  position: relative;
-}
-
 .is-typing {
   position: absolute;
   opacity: 0.5;
@@ -386,10 +406,10 @@ body {
 
 .bm-burger-button {
   position: fixed;
-  width: 36px;
-  height: 36px;
-  left: 36px;
-  top: 36px;
+  width: 24px;
+  height: 24px;
+  left: 24px;
+  top: 24px;
 }
 
 .bm-burger-bars {
@@ -404,12 +424,14 @@ body {
   width:200px;
   height: 200px;
   border-radius: 50%;
+  border: 10px solid rgb(223, 223, 223);
   background-repeat: no-repeat;
-  background-size: 200px 200px;
+  background-size: 180px 180px;
   position: absolute;
   top:-75px;
   left:-75px;
   margin: auto;
+  z-index: 2;
 }
 
 .username {
@@ -417,7 +439,6 @@ body {
   top: -54px;
   left: 135px;
   font-size: 48px;
-  color: white;
 }
 
 input[type="file"] {
@@ -442,12 +463,10 @@ input[type="file"] {
 }
 
 .overview {
-  height: 70vh;
+  height: 600px;
   width: 500px;
   margin: auto;
   position: relative;
-  border-radius: 20px;
-  background-color: #16b1ff;
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -456,11 +475,12 @@ input[type="file"] {
 .overview-container {
   margin-top: 50px;
   margin-left: 100px; 
+  display: flex;
   margin: auto;
 }
 
 .status {
-  height: 125px;
+  height: 130px;
   width: 100%;
   display:flex;
   align-items: center;
@@ -469,51 +489,59 @@ input[type="file"] {
   padding: 12px 36px 0 137px;
   position: absolute;
   z-index: 1;
-  color: white;
   word-break: break-all;
   font-weight: 800;
+  background-color: white;
 }
 
 .timeline-container {
   position: absolute;
-  z-index: 0;
   top: 0;
   left: 0;
   padding: 25px;
   width: 100%;
   height: 100%;
-  padding-top: 150px;
 }
 
 .timeline {
   width:100%;
   height:100%;
-  background-color: white;
-  border-radius: 25px; 
-  padding: 20px; 
+  padding-top: 118px; 
   overflow-y: auto;
   overflow-x: hidden;
+  background-color: rgb(236, 236, 236);
 }
 
 .timeline-event {
-  min-height: 50px;
-  display:flex;
-  align-items: center;
+  display:block;
+  margin: auto 20px;
   word-break: break-all;
+  padding: 10px 0;
 }
 
 .timeline-event-time {
   color: grey;
-  font-size: 1.5vh;
+  font-size: 15px;
+}
+
+.timeline-header {
+  position: absolute;
+  top: 106px;
+  right: 20px;
+  font-size: 16px;
+  font-weight: 800;
+  font-style: italic;
+  z-index: 2;
 }
 
 .profile-image {
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   background-repeat: no-repeat;
-  background-size: 40px 40px;
+  background-size: 50px 50px;
   position: relative;
+  margin-top: 10px;
 }
 
 .online-status {
@@ -523,17 +551,6 @@ input[type="file"] {
   border-radius: 50%;
   top:-5px;
   right: -5px;
-}
-
-.friendlist-image {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  background-repeat: no-repeat;
-  background-size: 30px 30px;
-  position: absolute;
-  top:0;
-  left:0;
 }
 
 .friend-link {
@@ -547,16 +564,6 @@ input[type="file"] {
   cursor: pointer;
 }
 
-.timeline-header {
-  position: absolute;
-  top: 126px;
-  right: 40px;
-  font-size: 16px;
-  font-weight: 800;
-  color: white;
-  font-style: italic;
-}
-
 .request-data-notification {
   position: absolute;
   width: 20px;
@@ -566,16 +573,56 @@ input[type="file"] {
   right: -10px;
 }
 
+/* Modal */
+.modal-content {
+  border-radius: 20px;
+  background-color: #3D9970;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+.modal-close {
+  position: absolute;
+  border: none;
+  background-color: #3D9970;
+  top:10px;
+  right: 10px;
+  color: white;
+  font-size: 24px;
+}
+
+.modal-button {
+  background-color: #3D9970;
+  border: 1px solid white;
+  width: 25%;
+  border-radius: 20px;
+  color: white;
+  padding: 10px;
+  margin-left: auto;
+}
+
+.modal-button:hover {
+  background-color: #43a77a;
+}
+
+.modal-input {
+  background-color: #3D9970;
+  border: none;
+  color: white;
+}
+
+.modal-body {
+  margin: 40px 0 0 0;
+  font-size: 24px;
+}
+
 @media screen and (max-width: 1000px) {
   .friend-panel {
     display: none;
   }
   #sidebar {
     display: block;
-  }
-  .conversation {
-    width: 80vw;
-    margin: auto;
   }
   .info-welcome {
     width: 100%;
@@ -588,47 +635,60 @@ input[type="file"] {
   }
   .overview-container {
     width: 100%;
+    height: 100%;
   }
   .overview {
     width: 100%;
-    height: 100vh;
+    height: 100%;
     padding-top: 200px;
     border-radius: 0;
   }
 
   .content {
     width: 100%;
-    height: 100vh;
+    height: 100%;
   }
   .profile-portrait {
     width:100px;
     height: 100px;
-    background-size: 100px 100px;
+    background-size: 80px 80px;
     top: 25px;
     left: 50%;
     margin-left: -50px;
   }
   .username {
-    top: 125px;
-    left: 50%;
-    font-size: 48px;
-    margin-left: -48px;
-    color: white;
+    position: static;
+    z-index: 2;
+    text-align: center;
+    margin-top: -75px;
+    font-size: 36px;
   }
   .status {
-    padding: 0;
+    padding: 0 20px;
   }
   .timeline-container {
     padding-top: 350px;
   }
 
   .timeline-header {
-    top: 326px;
+    top: 306px;
   }
 
   .conversation {
-    border-radius: 0;
     width: 100%;
-    height: 100vh;
+    height: 100%;
+    border-radius: 0;
+  }
+
+  .chat-input {
+    display: none;
+  }
+
+  .responsive-input {
+    display: block; 
+    margin-top: 2px;
+  }
+  .chat-display-wrapper {
+    margin-bottom: 0;
   }
 }

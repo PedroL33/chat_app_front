@@ -44,7 +44,7 @@ function Login() {
     }
 
     return (
-        <div className="form">
+        <div className="form shadow">
             <div className="form-title">Login</div>
             <div className="form-links">
                 <div className="form-link" onClick={e => handleClick(e, navInfo())}>About</div>

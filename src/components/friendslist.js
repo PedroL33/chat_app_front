@@ -29,7 +29,6 @@ function Friendslist() {
                         <CSSTransition timeout={300} classNames="friend-list-item" key={friend}>
                             <li className={currentConversation===friend && show ? "friend-list-item active" : "friend-list-item"} onClick={() => handleClick(friend)}
                              data-toggle="tooltip" data-placement="right" title={`${friend} is ${friendData.online[friend].status}`}>
-                                <div className="friendlist-image" style={{backgroundImage: `url(${friendData.online[friend].picture})`}} ></div>
                                 <div>{friend}</div>
                                 {friendData.online[friend] && friendData.online[friend].isTyping ? <div>...</div>: null}
                                 {unreadData[friend] && <div className="unread bg-warning">{unreadData[friend]}</div>}

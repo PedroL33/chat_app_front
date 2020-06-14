@@ -65,7 +65,7 @@ function Signup() {
     }
 
     return (
-        <div className="form">
+        <div className="form shadow">
             <div className="form-title">Signup</div>
             <label className="form-label">Username:</label>
             {errors.body && <span className="form-error">&nbsp;{errors.body}</span>}

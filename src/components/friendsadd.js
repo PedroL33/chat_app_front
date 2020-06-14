@@ -30,7 +30,7 @@ function Friendsadd() {
     }
 
     return (
-        <div>
+        <div className="h-100">
             <div className="friend-panel-item">
                 <span className="close-button" onClick={() => handleClick()}><span aria-hidden="true">&times;</span></span>
                 <div className="add-form-container">

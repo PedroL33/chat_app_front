@@ -24,7 +24,7 @@ function Timeline() {
     }
 
     return (
-        <div className="timeline-container">
+        <div className="timeline-container shadow bg-white">
             <div className="timeline-header">Activity Log</div>
             <div className="timeline" ref={displayRef}>
                 {timelineEvents.map(item => (

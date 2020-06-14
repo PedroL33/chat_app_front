@@ -31,7 +31,7 @@ function App() {
   const auth = useSelector(state => state.authenticated)
 
   return (
-    <div className="app-container" style={{backgroundImage: `url(${window.location}images/background.jpg)`}}>
+    <div className="app-container">
       {auth ? <Dashboard /> : nav=="login" ? <Login /> : nav=="signup" ? <Signup /> : <Info />}
     </div>
   );

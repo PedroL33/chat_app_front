@@ -54,29 +54,22 @@ function Overview() {
                 <div className="status">
                     <div>
                         Currently {currentUser.status}. &nbsp; 
-                        <button onClick={()=> clearForm()} type="button" className="btn btn-success" data-toggle="modal" data-target="#update-status">
-                            Update
+                        <button onClick={()=> clearForm()} type="button" className="update-status-button" data-toggle="modal" data-target="#update-status">
+                          <i className="fas fa-pen"></i>
                         </button>
                     </div>
                 </div>
                 <div class="modal fade" id="update-status" tabIndex="-1" role="dialog" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title">Let your friends know what you are doing!</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <div className="row">
-                                    <div className="col-3">I am...</div>
-                                    <input ref={statusInput} className="col-8" type="text" onChange={(e)=> setStatus(e.target.value)} placeholder={currentUser.status}></input>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button onClick={() => handleClick()} data-dismiss="modal" type="button" class="btn btn-primary">Update</button>
-                            </div>
+                          <button type="button" className="modal-close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                          <div className="modal-body">
+                              <span>I am </span>
+                              <input ref={statusInput} className="modal-input" type="text" onChange={(e)=> setStatus(e.target.value)} placeholder={currentUser.status}></input>
+                          </div>
+                          <button onClick={() => handleClick()} data-dismiss="modal" type="button" class="modal-button">Update</button>
                         </div>
                     </div>
                 </div>
