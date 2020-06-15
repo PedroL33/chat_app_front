@@ -36,7 +36,8 @@ function Info() {
         <div className="info row">
           <div className="conversation info-conversation position-relative shadow">
             <div>
-              <div className="profile-image mx-auto" style={{backgroundImage: `url(${window.location + "/titleicon.ico"})`}} >
+              <div className="info-profile-image mx-auto" >
+                <i className="far fa-comment-dots"></i>
                 <div className="online-status bg-success"></div>
               </div>
               <div className="conversation-name">Chat App</div>
