@@ -73,7 +73,6 @@ body {
 }
 
 .info-side-container {
-  width: 60%;
   height: 100%;
 }
 
@@ -82,11 +81,11 @@ body {
   flex-direction: column;
   justify-content: center;
   height: 100%;
-  width: 70%;
-  margin: auto;
+  width: 100%;
   text-align: left;
   color: white; 
   letter-spacing: 0.5px;
+  padding-right: 100px;
 }
 
 .info-side h1 {
@@ -103,7 +102,7 @@ body {
   margin: 10px;
 }
 .info-buttons {
-  margin: 35px 35px 0 auto;
+  margin: 35px 100px 0 auto;
 }
 
 .main-title {
@@ -330,6 +329,7 @@ body {
 
 .form-error {
   color: rgb(255, 103, 103);
+  font-size: 12px;
 }
 
 .form-label {
@@ -648,6 +648,7 @@ input[type="file"] {
     display: block;
   }
   .info-side {
+    margin-left: 40px;
     width: 100%;
   }
   .info-conversation {

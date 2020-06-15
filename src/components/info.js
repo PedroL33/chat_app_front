@@ -11,12 +11,14 @@ function Info() {
     var messages = [{message:"Hi, welcome to Chat App!", time: "just now"}, {message:"Login or Signup to start chatting with your friends.", time: "just now"}, {message: "What are you waiting for!?!?", time: "just now"}]
 
     useEffect(()=> {
+      var timeouts = []
       for(let i=0; i<messages.length;i++) {
-        setTimeout(() => {setIsTyping(true)}, ((i-1)*3000)+3000)
-        setTimeout(() => {newMessage(messages[i])}, ((i)*3000)+2000)
-        setTimeout(() => {setIsTyping(false)}, ((i)*3000)+2000)
+        timeouts.push(setTimeout(() => {setIsTyping(true)}, ((i-1)*3000)+3000))
+        timeouts.push(setTimeout(() => {newMessage(messages[i])}, ((i)*3000)+2000))
+        timeouts.push(setTimeout(() => {setIsTyping(false)}, ((i)*3000)+2000))
       }
       return function cleanup() {
+        timeouts.forEach(item => clearTimeout(item))
         dispatch(clearMessages())
       }
     }, [])
@@ -58,7 +60,7 @@ function Info() {
             <textarea className="chat-input" placeholder="What on your mind..." disabled></textarea>
             <input type="text" className="responsive-input form-control" placeholder="What on your mind..." />
           </div>
-          <div class="info-side-container col-md-6">
+          <div class="info-side-container col-md-7">
             <div className="info-side">
               <h1>A simple way to connect to your circle.</h1>
               <h3>Communication can be difficult, the software you use shouldn't be.</h3>
