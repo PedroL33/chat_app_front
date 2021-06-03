@@ -35,7 +35,7 @@ function Signup() {
                 errors: ["Passwords do not match."]
             }))
         }else {
-            fetch('https://intense-journey-99404.herokuapp.com/signup', {
+            fetch('http://localhost:3000/signup', {
                 method: 'POST',
                 headers: {
                     "Content-Type": "application/json"

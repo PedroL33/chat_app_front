@@ -11,7 +11,7 @@ function Login() {
 
     function login(e) {
         e.preventDefault();
-        fetch('https://intense-journey-99404.herokuapp.com/login', {
+        fetch('http://localhost:3000/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
