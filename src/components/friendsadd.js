@@ -44,7 +44,7 @@ function Friendsadd() {
                             :<div>
                                 <div className="add-input-container">
                                     <input className="form-control" placeholder="Username..." type="text" onChange={(e) => setAddFriend(e.target.value)}></input>
-                                    <button className="btn btn-success btn-sm add-button" onClick={() => socket.emit('send_request', addFriend)} data-toggle="tooltip" data-placement="top" title="Send Request">
+                                    <button className="btn btn-success btn-sm add-button" onClick={() => socket.emit('send_request', addFriend, localStorage.getItem('token'))} data-toggle="tooltip" data-placement="top" title="Send Request">
                                         <i className="fas fa-plus"></i>
                                     </button> 
                                 </div>
@@ -56,14 +56,14 @@ function Friendsadd() {
                     <div className="card-header">Requests</div>
                     <TransitionGroup>
                         {requestData && requestData.map((item) => (
-                            <CSSTransition timeout={300} classNames="friend-list-item" key={item}>
+                            <CSSTransition timeout={300} classNames="friend-list-item" key={item._id}>
                                 <li className="friend-list-item">
-                                    <div className="mx-auto">{item}</div>   
+                                    <div className="mx-auto">{item.user.username}</div>   
                                     <div>
-                                        <button className="btn btn-success btn-sm mr-auto" onClick={() => socket.emit('accept_request', item)} data-toggle="tooltip" data-placement="top" title="Accept">
+                                        <button className="btn btn-success btn-sm mr-auto" onClick={() => socket.emit('accept_request', item.user.username, localStorage.getItem('token'))} data-toggle="tooltip" data-placement="top" title="Accept">
                                             <i className="fas fa-check"></i>
                                         </button> 
-                                        <button className="btn btn-danger btn-sm ml-auto" onClick={() => socket.emit('decline_request', item)} data-toggle="tooltip" data-placement="top" title="Decline">
+                                        <button className="btn btn-danger btn-sm ml-auto" onClick={() => socket.emit('decline_request', item.user.username, localStorage.getItem('token'))} data-toggle="tooltip" data-placement="top" title="Decline">
                                             <span aria-hidden="true">&times;</span>
                                         </button> 
                                     </div>

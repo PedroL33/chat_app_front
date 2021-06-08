@@ -17,7 +17,7 @@ function Dashboard() {
             socket.emit('get_user_data', localStorage.getItem('token'))
             socket.emit('get_request_data', localStorage.getItem('token'))
             socket.emit('get_message_data', localStorage.getItem('token'))
-            socket.emit('new_user')
+            socket.emit('new_user', localStorage.getItem('token'))
         })  
         socket.on('duplicate_auth', (error) => {
             socket.disconnect();
@@ -27,6 +27,7 @@ function Dashboard() {
             dispatch(setLoginErrors({error: error}))
         }) 
         socket.on('invalid_auth', () => {
+          console.log("hi")
             socket.disconnect();
             dispatch(userLogout());
         })      
@@ -34,13 +35,14 @@ function Dashboard() {
             dispatch(setCurrentUser(data))
         })
         socket.on('update_complete', (data) => {
-            socket.emit('get_current_user')
-            socket.emit('broadcast_update', data)
+            socket.emit('get_current_user', localStorage.getItem('token'))
+            socket.emit('broadcast_update', data, localStorage.getItem('token'))
         })
         socket.on('timeline_update', (data) => {
             dispatch(addEvent(data))
         })
         socket.on('error', (error) => {
+          console.log(error)
             if(error === "Invalid token.") {
                 socket.disconnect();
                 dispatch(userLogout())

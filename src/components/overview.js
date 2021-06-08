@@ -18,12 +18,12 @@ function Overview() {
     function savePhoto() {
         let fd = new FormData();
         fd.append("image", file)
-        socket.emit('profile_photo', file)
+        socket.emit('profile_photo', file, localStorage.getItem('token'))
         setFile("")
     }
 
     function handleClick() {
-        socket.emit("update_status", status)
+        socket.emit("update_status", status, localStorage.getItem('token'))
     }
 
     function clearForm() {
