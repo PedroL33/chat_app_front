@@ -1,9 +1,3 @@
-export const loginSuccess = () => {
-    return {
-        type: "LOGIN_SUCCESS"
-    }
-}
-
 export const navLogin = () => {
     return {
         type: "NAV_LOGIN"
@@ -22,29 +16,9 @@ export const navInfo = () => {
     }
 }
 
-export const setLoginErrors = (errors) => {
-    return {
-        type: "SET_LOGIN_ERRORS",
-        payload: errors
-    }
-}
-
 export const clearLoginErrors = () => {
     return {
         type: "CLEAR_LOGIN_ERRORS"
-    }
-}
-
-export const setSignupErrors = (errors) => {
-    return {
-        type: "SET_SIGNUP_ERRORS",
-        payload: errors
-    }
-}
-
-export const clearSignupErrors = () => {
-    return { 
-        type: "CLEAR_SIGNUP_ERRORS"
     }
 }
 

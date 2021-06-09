@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { navLogin, navInfo, loginSuccess, setSignupErrors, clearSignupErrors } from '../actions';
+import { navLogin, navInfo } from '../actions';
+import { signup, setSignupErrors, clearSignupErrors } from '../actions/authentication';
 import { useDispatch, useSelector } from 'react-redux';
 
 function Signup() {
@@ -28,39 +29,14 @@ function Signup() {
         setEmail("")
     }
 
-    function signup(e) {
+    function handleSubmit(e) {
         e.preventDefault()
         if(confirm !== password) {
             dispatch(setSignupErrors({
                 errors: ["Passwords do not match."]
             }))
         }else {
-            fetch('http://localhost:3000/signup', {
-                method: 'POST',
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    username: username.trim(),
-                    password: password,
-                    email: email.trim()
-                })
-            })
-            .then(results => results.json())
-            .then(data => {
-                if(data.token) {
-                    localStorage.setItem('token', data.token)
-                    dispatch(loginSuccess())
-                    dispatch(clearSignupErrors())
-                    setUsername("")
-                    setPassword("")
-                    setConfirm("")
-                    setEmail("")
-                }else {
-                    dispatch(setSignupErrors(data))
-                }
-            })
-            .catch(errors => dispatch(setSignupErrors(errors)))
+            dispatch(signup(username, password, email));
         }
     }
 
@@ -80,7 +56,7 @@ function Signup() {
             <label className="form-label">Confirm Password</label>
             <input className="form-control mb-3" type="password" placeholder="Must match password." onChange={e=>setConfirm(e.target.value)}></input>
             <div className="text-center">
-                <button className="btn btn-success" onClick={(e) => signup(e)}>Signup</button>
+                <button className="btn btn-success" onClick={(e) => handleSubmit(e)}>Signup</button>
             </div>
             <div className="form-links">
                 <div className="form-link" onClick={(e) => handleClick(e, navInfo())}>About</div>

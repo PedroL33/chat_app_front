@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
 import { useDispatch } from 'react-redux';
-import { userLogout, navLogin, setLoginErrors, setCurrentUser, addEvent } from '../actions';
+import { userLogout, navLogin, setCurrentUser, addEvent } from '../actions';
+import { setLoginErrors } from '../actions/authentication';
 import io from 'socket.io-client';
 import MainPanel from './mainPanel';
 
@@ -27,7 +28,6 @@ function Dashboard() {
             dispatch(setLoginErrors({error: error}))
         }) 
         socket.on('invalid_auth', () => {
-          console.log("hi")
             socket.disconnect();
             dispatch(userLogout());
         })      
@@ -42,7 +42,6 @@ function Dashboard() {
             dispatch(addEvent(data))
         })
         socket.on('error', (error) => {
-          console.log(error)
             if(error === "Invalid token.") {
                 socket.disconnect();
                 dispatch(userLogout())

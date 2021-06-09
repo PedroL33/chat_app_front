@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { navInfo, navSignup, loginSuccess, setLoginErrors, clearLoginErrors } from '../actions/index';
+import { navInfo, navSignup, clearLoginErrors } from '../actions';
+import { login } from '../actions/authentication';
 
 
 function Login() {
@@ -9,30 +10,9 @@ function Login() {
     const dispatch = useDispatch();
     const errors = useSelector(state => state.loginErrors)
 
-    function login(e) {
+    function handleSubmit(e) {
         e.preventDefault();
-        fetch('http://localhost:3000/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            }, 
-            body: JSON.stringify({
-                username: username.trim(), 
-                password: password
-            })
-        })
-        .then( results => results.json())
-        .then( data => {
-            if(data.token) {
-                localStorage.setItem('token', data.token)
-                dispatch(loginSuccess());
-            }else {
-                dispatch(setLoginErrors(data))
-            }
-        })
-        .catch(err => {
-            dispatch(setLoginErrors(err))
-        })
+        dispatch(login(username, password))
     }
 
     function handleClick(e, action) {
@@ -54,7 +34,7 @@ function Login() {
             <input className={errors.error ? "form-control my-3 is-invalid": "form-control my-3"} type="text" onChange={e => setUsername(e.target.value)} placeholder="Username"></input>
             <input className={errors.error ? "form-control my-3 is-invalid": "form-control my-3"} type="password" onChange={e => setPassword(e.target.value)} placeholder="Password"></input>
             <div className="text-center">
-                <button className="btn btn-primary" onClick={e => login(e)}>Login</button>
+                <button className="btn btn-primary" onClick={e => handleSubmit(e)}>Login</button>
             </div>
         </div>
     )

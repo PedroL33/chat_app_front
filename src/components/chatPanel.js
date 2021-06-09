@@ -94,7 +94,7 @@ function ChatPanel() {
                 </div>
                 {friendData.online[conversationUser] && friendData.online[conversationUser].isTyping ? <div className="is-typing">{conversationUser} is typing...</div>: null}
               </div>
-              <textarea ref={inputRef} className="chat-input" onChange={(e)=> handleChange(e)} onKeyPress={(e)=> handleKeyPress(e)} placeholder="What on your mind..."></textarea>
+              <textarea ref={inputRef} className="chat-input" value={message} onChange={(e)=> handleChange(e)} onKeyPress={(e)=> handleKeyPress(e)} placeholder="What on your mind..."></textarea>
               <input type="text" ref={inputRef} className="responsive-input form-control" onChange={(e)=> handleChange(e)} onKeyPress={(e)=> handleKeyPress(e)} placeholder="What on your mind..." />
           </div>
         </CSSTransition>

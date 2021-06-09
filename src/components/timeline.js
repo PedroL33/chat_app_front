@@ -1,7 +1,6 @@
 import React, {useEffect, useRef} from'react';
 import {useSelector, useDispatch} from 'react-redux';
 import {setConversation, showConversation} from '../actions';
-import moment from 'moment';
 
 function Timeline() {
 
@@ -35,7 +34,7 @@ function Timeline() {
                         </em>
                         &nbsp;{item.message}&nbsp; 
                         <time className="timeline-event-time">
-                            {moment.tz(item.time, "America/Los_Angeles")}
+                            {item.time}
                         </time>
                     </div>
                     )

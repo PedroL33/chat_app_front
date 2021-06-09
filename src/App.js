@@ -5,7 +5,7 @@ import { Dashboard } from './components/dashboard';
 import Signup from './components/signup';
 import Info from './components/info';
 import { useSelector, useDispatch } from 'react-redux';
-import { loginSuccess } from './actions';
+import { loginSuccess } from './actions/authentication';
 import jwt from 'jwt-decode';
 
 function App() {
