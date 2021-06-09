@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 import Friendslist from './friendslist';
 import Friendsadd from './friendsadd';
 import { useSelector } from 'react-redux';
 import { setFriendData, setRequestData, setMessageData, setUnreadData, setIsTyping, setNotTyping } from '../actions';
-import { socket } from './dashboard';
+import { SocketContext } from '../context/socket';
 import { useDispatch } from 'react-redux';
 import { CSSTransition, SwitchTransition } from 'react-transition-group';
 
@@ -12,6 +12,7 @@ function FriendPanel() {
     const conversationUser = useSelector(state => state.currentConversation)
     const currentUser = useSelector(state => state.currentUser)
     const showConversation = useSelector(state => state.showConversation)
+    const socket = useContext(SocketContext);
 
     useEffect(() => {
         socket.on('user_data', friends => {

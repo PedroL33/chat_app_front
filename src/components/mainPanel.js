@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import FriendPanel from './friendPanel';
 import ChatPanel from './chatPanel';
 import Overview from './overview';
@@ -6,12 +6,14 @@ import { useSelector, useDispatch } from 'react-redux';
 import { userLogout } from '../actions';
 import { CSSTransition, SwitchTransition } from 'react-transition-group';
 import Sidebar from './sidebar';
-import {socket} from './dashboard';
+import { SocketContext } from '../context/socket';
 
 function MainPanel() {
     const dispatch = useDispatch()
     const showConversation = useSelector(state => state.showConversation)
-    function signout() {
+    const socket = useContext(SocketContext);
+
+    const signout = () => {
         dispatch(userLogout())
         socket.disconnect();
         localStorage.removeItem('token');

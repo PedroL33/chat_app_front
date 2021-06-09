@@ -1,7 +1,7 @@
-import React, {useState, useRef} from 'react';
-import {socket} from './dashboard';
+import React, {useState, useRef, useContext} from 'react';
 import {useSelector} from 'react-redux';
 import Timeline from './timeline';
+import { SocketContext } from '../context/socket';
 
 function Overview() {
 
@@ -10,6 +10,7 @@ function Overview() {
     const url = file === "" ? currentUser.picture : URL.createObjectURL(file) 
     const [status, setStatus] = useState("")
     const statusInput = useRef(null)
+    const socket = useContext(SocketContext);
 
     const style = {
         backgroundImage: `url(${url})`

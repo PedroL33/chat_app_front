@@ -1,17 +1,16 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useContext} from 'react';
 import { useDispatch } from 'react-redux';
 import { userLogout, navLogin, setCurrentUser, addEvent } from '../actions';
 import { setLoginErrors } from '../actions/authentication';
-import io from 'socket.io-client';
 import MainPanel from './mainPanel';
-
-var socket;
+import { SocketContext } from '../context/socket';
  
 function Dashboard() {
 
     const dispatch = useDispatch();
 
-    socket = io('http://localhost:3000', {query: {token: localStorage.getItem('token')}});
+    const socket = useContext(SocketContext);
+    
     useEffect(() => {
         socket.on('connect', () => {
             console.log(`${socket.id} had connected.`)
@@ -64,4 +63,4 @@ function Dashboard() {
     )
 }
 
-export { Dashboard, socket };
+export default Dashboard;
