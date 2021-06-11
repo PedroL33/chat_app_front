@@ -2,13 +2,18 @@ import React, {useState, useEffect} from 'react';
 import { navLogin, navSignup } from '../actions';
 import { useDispatch, useSelector } from 'react-redux';
 import {addMessage, clearMessages} from '../actions';
+import styles from '../styles/info.module.css';
 
 function Info() {
 
     const dispatch = useDispatch();
     const [isTyping, setIsTyping] = useState(false);
     const infoMsgs = useSelector(state => state.messageData)
-    var messages = [{message:"Hi, welcome to Chat App!", time: "just now"}, {message:"Login or Signup to start chatting with your friends.", time: "just now"}, {message: "What are you waiting for!?!?", time: "just now"}]
+    var messages = [
+      {message:"Hi, welcome to Chat App!", time: "just now"}, 
+      {message:"Login or Signup to start chatting with your friends.", time: "just now"}, 
+      {message: "What are you waiting for!?!?", time: "just now"}
+    ]
 
     useEffect(()=> {
       var timeouts = []
@@ -33,41 +38,32 @@ function Info() {
     }
 
     return (
-        <div className="info row">
-          <div className="conversation info-conversation position-relative shadow">
-            <div>
-              <div className="info-profile-image mx-auto" >
+        <div className={styles.info}>
+          <div className={styles.contents}>
+            <div className={styles.conversationContainer}>
+              <div>
                 <i className="far fa-comment-dots"></i>
-                <div className="online-status bg-success"></div>
+                <div className={styles.title}>Chat App</div>
               </div>
-              <div className="conversation-name">Chat App</div>
-            </div>
-            <div className="chat-display-wrapper">
-              <div className="chat-display">
+              <div className={styles.chatContainer}>
                 {infoMsgs.map(item => (
-                    <div className="message-container to" key={item.message}>
-                      <div className="message-contents">
-                        <div className="message">
-                          <div>{item.message}</div>
-                        </div>
+                    <div className={styles.message} key={item.message}>
+                      <div className={styles.messageContents}>
+                        {item.message}
                       </div>
-                      <div className="message-time">&nbsp;{item.time}</div>
+                      <div className={styles.messageTime}>&nbsp;{item.time}</div>
                     </div>
                   )
                 )}
+                {isTyping ? <div className={styles.isTyping}>Chat App is typing...</div>: null}
               </div>
-              {isTyping ? <div className="is-typing">Chat App is typing...</div>: null}
+              <textarea className={styles.input} placeholder="What on your mind..." disabled></textarea>
             </div>
-            <textarea className="chat-input" placeholder="What on your mind..." disabled></textarea>
-            <input type="text" className="responsive-input form-control" placeholder="What on your mind..." />
-          </div>
-          <div class="info-side-container col-md-7">
-            <div className="info-side">
+            <div className={styles.infoSide}>
               <h1>A simple way to connect to your circle.</h1>
-              <h3>Communication can be difficult, the software you use shouldn't be.</h3>
-              <div className="info-buttons">
-                <button className="landing-button" onClick={(e) => handleClick(e, navLogin())}>Login</button>
-                <button className="landing-button" onClick={(e) => handleClick(e, navSignup())}>Signup</button>
+              <div className={styles.infoButtons}>
+                <button className={styles.landingButton} onClick={(e) => handleClick(e, navLogin())}>Login</button>
+                <button className={styles.landingButton} onClick={(e) => handleClick(e, navSignup())}>Signup</button>
               </div>
             </div>
           </div>

@@ -19,18 +19,6 @@ body {
   background-color: rgb(223, 223, 223);
 }
 
-.btn {
-  font-size: 16px;
-}
-
-.update-status-button {
-  background-color: white;
-  color: green;
-  border: none;
-  padding: 0;
-  display: inline-block;  
-}
-
 .logout {
   position: absolute;
   top: 19px;
@@ -43,79 +31,6 @@ body {
 .logout:hover {
   color:red;
   cursor: pointer;
-}
-
-/* landing page */
-.info {
-  width: 100%;
-  height: 100%;
-  background-repeat: no-repeat;
-  background-position: right top;
-  display: flex;
-  justify-content: center;
-  font-size: 24px;
-  background-position: 100% 100%;
-  text-align: center;
-  background-color: #3D9970;
-}
-
-.landing-button {
-  padding: 5px 15px;
-  border-radius: 30px;
-  border: 1px solid white;
-  background-color: #3D9970;
-  color: white;
-}
-
-.landing-button:hover {
-  background-color: white;
-  color: #3D9970;
-}
-
-.info-side-container {
-  height: 100%;
-}
-
-.info-side {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 100%;
-  width: 100%;
-  text-align: left;
-  color: white; 
-  letter-spacing: 0.5px;
-  padding-right: 100px;
-}
-
-.info-side h1 {
-  font-size: 56px;
-}
-
-.info-side h3 {
-  font-size: 28px;
-  margin: 10px;
-}
-
-.info-buttons button {
-  font-size: 20px;
-  margin: 10px;
-}
-.info-buttons {
-  margin: 35px 100px 0 auto;
-}
-
-.info-profile-image {
-  width: 50px;
-  height: 50px;
-  color: white;
-  background-color: #3D9970;
-  font-size: 28px;
-  border-radius: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
 }
 
 .main-title {
@@ -241,7 +156,7 @@ body {
   justify-content: center;
   border-radius: 30px;
   width: 500px;
-  height: 90%;
+  height: 800px;
   margin: auto;
   z-index: 2;
 }
@@ -307,46 +222,6 @@ body {
 
 .responsive-input {
   display:none;
-}
-
-.form {
-  margin: auto;
-  width: 25%;
-  border: 1px solid rgb(211, 211, 211);
-  padding: 70px 40px;
-  border-radius: 20px; 
-  position:relative;
-  background: white;
-  color: #005d8c;
-}
-
-.form-links {
-  display: flex;
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
-}
-
-.form-link {
-  cursor: pointer;
-  color: dodgerblue;
-  padding: 10px;
-}
-
-.form-title {
-  position: absolute;
-  font-size: 30px;
-  top:20px;
-  left:20px;
-}
-
-.form-error {
-  color: rgb(255, 103, 103);
-  font-size: 12px;
-}
-
-.form-label {
-  font-size: 12px;
 }
 
 .add-form-container {
@@ -450,84 +325,8 @@ body {
   display: none;
 }
 
-.profile-portrait {
-  width:200px;
-  height: 200px;
-  border-radius: 50%;
-  border: 10px solid rgb(223, 223, 223);
-  background-repeat: no-repeat;
-  background-size: 180px 180px;
-  position: absolute;
-  top:-75px;
-  left:-75px;
-  margin: auto;
-  z-index: 2;
-}
-
-.username {
-  position: absolute;
-  top: -54px;
-  left: 135px;
-  font-size: 48px;
-}
-
 input[type="file"] {
   display: none;
-}
-
-.file-upload {
-  font-size: 24px;
-  color: rgb(0, 0, 0, 0.5);
-}
-
-.file-upload:hover {
-  cursor: pointer;
-  color: rgba(42, 151, 42);
-}
-
-.profile-picture-controls {
-  position: absolute;
-  right: 0;
-  top: 0;
-  z-index: 2;
-}
-
-.overview {
-  height: 80%;
-  width: 500px;
-  margin: auto;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-}
-
-.overview-container {
-  margin-top: 50px;
-  margin-left: 100px; 
-  height: 80%;
-  width: 50%;
-  display: flex;
-  margin: auto;
-}
-
-.status-container {
-  display:flex;
-  align-items: center;
-  justify-content: center;
-  height: 130px;
-  width: 100%;
-  font-size: 16px;
-  padding: 12px 36px 0 137px;
-  position: absolute;
-  z-index: 1;
-  font-weight: 800;
-  background-color: white;
-}
-
-.status {
-  display: inline-block;
-  font-size: 16px;
 }
 
 .timeline-container {
@@ -609,50 +408,6 @@ input[type="file"] {
   right: -10px;
 }
 
-/* Modal */
-.modal-content {
-  border-radius: 20px;
-  background-color: #3D9970;
-  color: white;
-  padding: 20px;
-  text-align: center;
-}
-
-.modal-close {
-  position: absolute;
-  border: none;
-  background-color: #3D9970;
-  top:10px;
-  right: 10px;
-  color: white;
-  font-size: 24px;
-}
-
-.modal-button {
-  background-color: #3D9970;
-  border: 1px solid white;
-  width: 25%;
-  border-radius: 20px;
-  color: white;
-  padding: 10px;
-  margin-left: auto;
-}
-
-.modal-button:hover {
-  background-color: #43a77a;
-}
-
-.modal-input {
-  background-color: #3D9970;
-  border: none;
-  color: white;
-}
-
-.modal-body {
-  margin: 40px 0 0 0;
-  font-size: 24px;
-}
-
 @media screen and (max-width: 1000px) {
   .friend-panel {
     display: none;
@@ -660,48 +415,10 @@ input[type="file"] {
   #sidebar {
     display: block;
   }
-  .info-side {
-    margin-left: 40px;
-    width: 100%;
-  }
-  .info-conversation {
-    display: none;
-  }
-  .form {
-    width: 90%;
-  }
-  .overview-container {
-    width: 100%;
-    height: 100%;
-  }
-  .overview {
-    width: 100%;
-    height: 100%;
-    padding-top: 200px;
-    border-radius: 0;
-  }
 
   .content {
     width: 100%;
     height: 100%;
-  }
-  .profile-portrait {
-    width:100px;
-    height: 100px;
-    background-size: 80px 80px;
-    top: 25px;
-    left: 50%;
-    margin-left: -50px;
-  }
-  .username {
-    position: static;
-    z-index: 2;
-    text-align: center;
-    margin-top: -75px;
-    font-size: 36px;
-  }
-  .status {
-    padding: 0 20px;
   }
   .timeline-container {
     padding-top: 350px;

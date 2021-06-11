@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import FriendPanel from './friendPanel';
 import ChatPanel from './chatPanel';
-import Overview from './overview';
+import Overview from './overview/overview';
 import { useSelector, useDispatch } from 'react-redux';
 import { userLogout } from '../actions';
 import { CSSTransition, SwitchTransition } from 'react-transition-group';

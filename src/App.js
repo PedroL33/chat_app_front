@@ -32,11 +32,16 @@ function App() {
   const auth = useSelector(state => state.authenticated)
 
   return (
-    <SocketContext.Provider value={socket}>
       <div className="app-container">
-        {auth ? <Dashboard /> : nav=="login" ? <Login /> : nav=="signup" ? <Signup /> : <Info />}
+        {
+          auth ? 
+            <SocketContext.Provider value={socket}>
+              <Dashboard />
+            </SocketContext.Provider>: 
+          nav=="login" ? <Login /> :
+          nav=="signup" ? <Signup />:
+          <Info />} 
       </div>
-    </SocketContext.Provider>
   );
 }
 

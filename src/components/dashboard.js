@@ -10,10 +10,14 @@ function Dashboard() {
     const dispatch = useDispatch();
 
     const socket = useContext(SocketContext);
+
+    useEffect(() => {
+      socket.connect();
+    }, [])
     
     useEffect(() => {
         socket.on('connect', () => {
-            console.log(`${socket.id} had connected.`)
+            console.log(`${socket.id} has connected.`)
             socket.emit('get_user_data', localStorage.getItem('token'))
             socket.emit('get_request_data', localStorage.getItem('token'))
             socket.emit('get_message_data', localStorage.getItem('token'))
@@ -56,10 +60,10 @@ function Dashboard() {
             socket.off('timeline_update')
             socket.off('current_user_data')
         }
-    })
+    }, [socket])
 
     return (
-        <MainPanel />
+      <MainPanel />
     )
 }
 

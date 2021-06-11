@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { navLogin, navInfo } from '../actions';
 import { signup, setSignupErrors, clearSignupErrors } from '../actions/authentication';
 import { useDispatch, useSelector } from 'react-redux';
+import styles from '../styles/forms.module.css';
 
 function Signup() {
     const dispatch = useDispatch();
@@ -41,26 +42,24 @@ function Signup() {
     }
 
     return (
-        <div className="form shadow">
-            <div className="form-title">Signup</div>
-            <label className="form-label">Username:</label>
-            {errors.body && <span className="form-error">&nbsp;{errors.body}</span>}
-            {errors.username && <span className="form-error">&nbsp;{errors.username}</span>}
-            <input className={errors.username ? "form-control mb-2 is-invalid" :"form-control mb-2"} type="text" placeholder="Minimum 4 characters." onChange={e=>setUsername(e.target.value)}></input>
-            <label className="form-label">Email:</label>
-            {errors.email && <span className="form-error">&nbsp;{errors.email}</span>}
-            <input className={errors.email ? "form-control mb-2 is-invalid" :"form-control mb-2"} type="text" placeholder="Email with a valid format." onChange={e=>setEmail(e.target.value)}></input>
-            <label className="form-label">Password:</label>
-            {errors.password && <span className="form-error">&nbsp;{errors.password}</span>}
-            <input className={errors.password ? "form-control mb-2 is-invalid" :"form-control mb-2"} type="password" placeholder="Minimum 6 characters." onChange={e=>setPassword(e.target.value)}></input>
-            <label className="form-label">Confirm Password</label>
-            <input className="form-control mb-3" type="password" placeholder="Must match password." onChange={e=>setConfirm(e.target.value)}></input>
-            <div className="text-center">
-                <button className="btn btn-success" onClick={(e) => handleSubmit(e)}>Signup</button>
-            </div>
-            <div className="form-links">
-                <div className="form-link" onClick={(e) => handleClick(e, navInfo())}>About</div>
-                <div className="form-link" onClick={(e) => handleClick(e, navLogin())}>Login</div>
+        <div className={styles.container}>
+            <div className={styles.formTitle}>Signup</div>
+            <label className={styles.formLabel}>Username:</label>
+            {errors.body && <span className={styles.form__error}>&nbsp;{errors.body}</span>}
+            {errors.username && <span className={styles.form__error}>&nbsp;{errors.username}</span>}
+            <input className={errors.username ? `${styles.form__input} ${styles.form__error}`: styles.form__input} type="text" placeholder="Minimum 4 characters." onChange={e=>setUsername(e.target.value)}></input>
+            <label className={styles.formLabel}>Email:</label>
+            {errors.email && <span className={styles.form__error}>&nbsp;{errors.email}</span>}
+            <input className={errors.email ? `${styles.form__input} ${styles.form__error}`: styles.form__input} type="text" placeholder="Email with a valid format." onChange={e=>setEmail(e.target.value)}></input>
+            <label className={styles.formLabel}>Password:</label>
+            {errors.password && <span className={styles.form__error}>&nbsp;{errors.password}</span>}
+            <input className={errors.password ? `${styles.form__input} ${styles.form__error}`: styles.form__input} type="password" placeholder="Minimum 6 characters." onChange={e=>setPassword(e.target.value)}></input>
+            <label className={styles.formLabel}>Confirm Password</label>
+            <input className={styles.form__input} type="password" placeholder="Must match password." onChange={e=>setConfirm(e.target.value)}></input>
+            <button className={styles.submit} onClick={(e) => handleSubmit(e)}>Signup</button>
+            <div className={styles.formLinks}>
+                <div className={styles.formLink} onClick={(e) => handleClick(e, navInfo())}>About</div>
+                <div className={styles.formLink} onClick={(e) => handleClick(e, navLogin())}>Login</div>
             </div>
         </div>
     )
