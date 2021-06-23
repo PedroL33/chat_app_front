@@ -11,7 +11,6 @@ function Login() {
     const errors = useSelector(state => state.loginErrors)
 
     function handleSubmit(e) {
-        e.preventDefault();
         dispatch(login(username, password))
     }
 

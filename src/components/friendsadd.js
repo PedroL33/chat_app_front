@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { SocketContext } from '../context/socket';
+import { socket } from './dashboard';
 import { listFriends, showRequestMessage, hideRequestMessage } from '../actions';
 import {CSSTransition, TransitionGroup, SwitchTransition} from 'react-transition-group';
 
@@ -12,7 +12,6 @@ function Friendsadd() {
     const requestData = useSelector(state => state.requestData)
     const show = useSelector(state => state.requestMessage)
     const [requestMessage, setRequestMessage] = useState({})
-    const socket = useContext(SocketContext);
 
     useEffect(() => {
         socket.on('request_message', (message) => {

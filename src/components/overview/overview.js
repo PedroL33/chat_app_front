@@ -1,7 +1,7 @@
-import React, {useState, useContext} from 'react';
+import React, { useState } from 'react';
 import {useSelector} from 'react-redux';
-import Timeline from '../timeline';
-import { SocketContext } from '../../context/socket';
+import Timeline from './timeline';
+import { socket } from '../dashboard';
 import styles from '../../styles/overview.module.css';
 import UpdateStatus from './updateStatus';
 
@@ -10,7 +10,6 @@ function Overview() {
     const [file, setFile] = useState("")
     const currentUser = useSelector(state => state.currentUser)
     const url = file === "" ? currentUser.picture : URL.createObjectURL(file) 
-    const socket = useContext(SocketContext);
     const [status, setStatus] = useState("")
 
     const style = {
@@ -47,10 +46,10 @@ function Overview() {
                 <div className={styles.username}>{currentUser.username}</div>
                 <div className={styles.status}>
                   <div className={styles.status__message}>
-                        Currently {currentUser.status}. &nbsp; 
-                        <button type="button" onClick={()=>setStatus("")} className={styles.status__button} data-toggle="modal" data-target="#update-status">
-                          <i className="fas fa-pen"></i>
-                        </button>
+                      Currently {currentUser.status}. &nbsp; 
+                      <button type="button" onClick={()=>setStatus("")} className={styles.status__button} data-toggle="modal" data-target="#update-status">
+                        <i className="fas fa-pen"></i>
+                      </button>
                   </div>
                 </div>
                 <UpdateStatus status={status} setStatus={setStatus} />

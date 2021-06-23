@@ -1,8 +1,8 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addFriends, setConversation, showConversation } from '../actions';
 import { CSSTransition, TransitionGroup} from 'react-transition-group';
-import { SocketContext } from '../context/socket';
+import { socket } from './dashboard';
 
 function Friendslist() {
 
@@ -12,7 +12,6 @@ function Friendslist() {
     const requestData = useSelector(state => state.requestData)
     const currentConversation = useSelector(state => state.currentConversation)
     const show = useSelector(state => state.showConversation)
-    const socket = useContext(SocketContext);
 
     function handleClick(friend) {
         socket.emit('mark_read', friend)

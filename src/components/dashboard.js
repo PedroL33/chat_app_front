@@ -1,19 +1,17 @@
-import React, {useEffect, useContext} from 'react';
+import React, {useEffect} from 'react';
 import { useDispatch } from 'react-redux';
 import { userLogout, navLogin, setCurrentUser, addEvent } from '../actions';
 import { setLoginErrors } from '../actions/authentication';
 import MainPanel from './mainPanel';
-import { SocketContext } from '../context/socket';
- 
-function Dashboard() {
+import io from 'socket.io-client';
+
+var socket; 
+
+const Dashboard = () => {
+
+  socket = io.connect('http://localhost:3000', {query: {token: localStorage.getItem('token')}})
 
     const dispatch = useDispatch();
-
-    const socket = useContext(SocketContext);
-
-    useEffect(() => {
-      socket.connect();
-    }, [])
     
     useEffect(() => {
         socket.on('connect', () => {
@@ -50,9 +48,9 @@ function Dashboard() {
                 dispatch(userLogout())
             }
         })
-        return function cleanup() {
+        return () => {
             socket.off('invalid_auth')
-            socket.off('connect')
+            socket.off('connection')
             socket.off('error')
             socket.off('duplcate_auth')
             socket.off('logged_in')
@@ -63,8 +61,8 @@ function Dashboard() {
     }, [socket])
 
     return (
-      <MainPanel />
+        <MainPanel />
     )
 }
 
-export default Dashboard;
+export {Dashboard, socket};

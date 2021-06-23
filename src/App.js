@@ -1,13 +1,12 @@
 import React, {useEffect} from 'react';
 import './App.css';
 import Login from './components/login';
-import Dashboard from './components/dashboard';
+import { Dashboard } from './components/dashboard';
 import Signup from './components/signup';
 import Info from './components/info';
 import { useSelector, useDispatch } from 'react-redux';
 import { loginSuccess } from './actions/authentication';
 import jwt from 'jwt-decode';
-import { SocketContext, socket } from './context/socket';
 
 function App() {
 
@@ -34,10 +33,7 @@ function App() {
   return (
       <div className="app-container">
         {
-          auth ? 
-            <SocketContext.Provider value={socket}>
-              <Dashboard />
-            </SocketContext.Provider>: 
+          auth ? <Dashboard />:
           nav=="login" ? <Login /> :
           nav=="signup" ? <Signup />:
           <Info />} 

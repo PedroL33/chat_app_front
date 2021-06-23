@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useRef, useCallback, useContext } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { hideConversation } from '../actions';
 import { SwitchTransition, CSSTransition} from 'react-transition-group';
-import { SocketContext } from '../context/socket';
+import { socket } from './dashboard';
 import moment from 'moment';
 import debounce from 'lodash/debounce';
 
@@ -13,7 +13,6 @@ function ChatPanel() {
     const displayRef = useRef(null);
     const didMountRef = useRef(false)
     const [message, setMessage] = useState("");
-    const socket = useContext(SocketContext);
     const currentUser = useSelector(state => state.currentUser);
     const messageData = useSelector(state => state.messageData);
     const friendData = useSelector(state => state.friendData);

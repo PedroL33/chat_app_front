@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import FriendPanel from './friendPanel';
 import ChatPanel from './chatPanel';
 import Overview from './overview/overview';
@@ -6,12 +6,11 @@ import { useSelector, useDispatch } from 'react-redux';
 import { userLogout } from '../actions';
 import { CSSTransition, SwitchTransition } from 'react-transition-group';
 import Sidebar from './sidebar';
-import { SocketContext } from '../context/socket';
+import { socket } from './dashboard';
 
 function MainPanel() {
     const dispatch = useDispatch()
     const showConversation = useSelector(state => state.showConversation)
-    const socket = useContext(SocketContext);
 
     const signout = () => {
         dispatch(userLogout())
