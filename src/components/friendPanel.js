@@ -8,6 +8,7 @@ import { useDispatch } from 'react-redux';
 import { CSSTransition, SwitchTransition } from 'react-transition-group';
 
 function FriendPanel() {
+  // test
     const dispatch = useDispatch()
     const conversationUser = useSelector(state => state.currentConversation)
     const currentUser = useSelector(state => state.currentUser)
