@@ -1,5 +1,5 @@
 import React from 'react';
-import FriendPanel from './friendPanel';
+import OpenFriendPanel from './friendPanel/openFriendPanel';
 import ChatPanel from './chatPanel';
 import Overview from './overview/overview';
 import { useSelector, useDispatch } from 'react-redux';
@@ -24,7 +24,7 @@ function MainPanel() {
                 <i className="fas fa-power-off"></i>
             </span>
             <Sidebar />
-            <FriendPanel />
+            <OpenFriendPanel />
             <div id="content" className="content">
                 <SwitchTransition mode="out-in">
                     <CSSTransition key={showConversation} timeout={300} classNames='main-panel-item'>

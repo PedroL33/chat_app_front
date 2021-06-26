@@ -152,3 +152,9 @@ export const userLogout = () => {
     }
 }
 
+export const toggleFriendPanel = () => {
+  return {
+    type: "TOGGLE_FRIEND_PANEL"
+  }
+}
+

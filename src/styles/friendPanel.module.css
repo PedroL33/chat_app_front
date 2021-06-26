@@ -1,0 +1,131 @@
+/* Open chat */
+
+.openContainer {
+  position: fixed;
+  bottom: 100px;
+  left: 100px;
+}
+
+.open {
+  width: 75px;
+  height: 75px;
+  border: none;
+  border-radius: 50%;
+}
+
+/* Chat container */
+
+.nav {
+  width: 100%;
+  display: flex;
+  align-items: stretch;
+  justify-content: stretch;
+}
+
+.header {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: green;
+  font-size: 48px;
+}
+
+.content {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+/* friendList */
+
+.container {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+}
+
+.list {
+  flex: 1;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  position: relative;
+}
+
+.list__header {
+  width: 100%;
+  padding: 10px;
+  background: rgb(19, 146, 19);
+  color: white;
+  font-weight: 800;
+  font-size: 20px;
+  text-align: center;
+}
+
+.list__unread {
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  color: #005d8c;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  right:0;
+  text-indent: 0;
+}
+
+/* Addfriend panel */
+
+.addInput {
+  border: 0;
+  outline: 0;
+  border-bottom: 1px solid black;
+  padding: 5px;
+  width: 200px;
+}
+
+.addButton {
+  padding: 5px 10px;
+  border: 0;
+  border-bottom: 1px solid black;
+  background: green;
+  color: white;
+}
+
+.message {
+  position: relative;
+  padding: 10px;
+}
+
+.message__icon {
+  font-size: 36px;  
+}
+
+.message__msg {
+
+}
+
+.message__button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: none;
+  background: white;
+}
+
+.accept, .decline {
+  border: none;
+  background: none;
+}
+
+.accept {
+  color: green;
+}
+
+.decline {
+  color: red;
+}
+

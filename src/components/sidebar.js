@@ -1,7 +1,7 @@
 import React from 'react';
 import {slide as Menu} from 'react-burger-menu';
-import Friendslist from './friendslist';
-import Friendsadd from './friendsadd';
+import Friendslist from './friendPanel/friendslist';
+import Friendsadd from './friendPanel/friendsadd';
 import {useSelector} from 'react-redux';
 
 function Sidebar() {
