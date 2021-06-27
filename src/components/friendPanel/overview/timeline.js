@@ -1,7 +1,7 @@
 import React, {useEffect, useRef} from'react';
 import {useSelector, useDispatch} from 'react-redux';
-import {setConversation, showConversation} from '../../actions';
-import styles from '../../styles/overview.module.css';
+import {setConversation, showConversation} from '../../../actions';
+import styles from '../../../styles/overview.module.css';
 
 function Timeline() {
 

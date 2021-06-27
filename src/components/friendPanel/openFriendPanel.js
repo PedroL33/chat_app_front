@@ -11,7 +11,7 @@ const OpenFriendPanel = () => {
   return (
     <div className={styles.openContainer}>
       <button className={styles.open} onClick={()=>dispatch(toggleFriendPanel())}>
-        Chat
+        <i className="far fa-comment"></i>
       </button>
       <FriendPanel />
     </div>

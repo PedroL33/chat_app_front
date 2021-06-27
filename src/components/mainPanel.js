@@ -1,36 +1,15 @@
 import React from 'react';
 import OpenFriendPanel from './friendPanel/openFriendPanel';
-import ChatPanel from './chatPanel';
-import Overview from './overview/overview';
-import { useSelector, useDispatch } from 'react-redux';
-import { userLogout } from '../actions';
-import { CSSTransition, SwitchTransition } from 'react-transition-group';
-import Sidebar from './sidebar';
-import { socket } from './dashboard';
+import UpdateStatus from './friendPanel/overview/updateStatus';
 
 function MainPanel() {
-    const dispatch = useDispatch()
-    const showConversation = useSelector(state => state.showConversation)
-
-    const signout = () => {
-        dispatch(userLogout())
-        socket.disconnect();
-        localStorage.removeItem('token');
-    }
 
     return (
         <div className="row main-panel">
-            <span className="logout" onClick={()=>signout()} data-toggle="tooltip" data-placement="top" title="Logout">
-                <i className="fas fa-power-off"></i>
-            </span>
-            <Sidebar />
             <OpenFriendPanel />
             <div id="content" className="content">
-                <SwitchTransition mode="out-in">
-                    <CSSTransition key={showConversation} timeout={300} classNames='main-panel-item'>
-                        {showConversation ? <ChatPanel /> : <Overview />}
-                    </CSSTransition>
-                </SwitchTransition>
+                <div>Chat App</div>
+                <UpdateStatus />
             </div>
         </div>
     )

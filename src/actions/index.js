@@ -22,18 +22,6 @@ export const clearLoginErrors = () => {
     }
 }
 
-export const addFriends = () => {
-    return {
-        type: "ADD_FRIENDS"
-    }
-}
-
-export const listFriends = () => {
-    return {
-        type: "LIST_FRIENDS"
-    }
-}
-
 export const setFriendData = (data) => {
     return {
         type: "SET_FRIEND_DATA",
@@ -158,3 +146,14 @@ export const toggleFriendPanel = () => {
   }
 }
 
+export const closeFriendPanel = () => {
+  return {
+    type: "CLOSE_FRIEND_PANEL"
+  }
+}
+
+export const openFriendPanel = () => {
+  return {
+    type: "OPEN_FRIEND_PANEL"
+  }
+}

@@ -2,11 +2,12 @@ import React, { useEffect, useState } from 'react';
 import Friendslist from './friendslist';
 import Friendsadd from './friendsadd';
 import { useSelector } from 'react-redux';
-import { setFriendData, setRequestData, setMessageData, setUnreadData, setIsTyping, setNotTyping } from '../../actions';
+import { setFriendData, setRequestData, setMessageData, setUnreadData, setIsTyping, setNotTyping, userLogout, closeFriendPanel } from '../../actions';
 import { socket } from '../dashboard';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import styles from '../../styles/friendPanel.module.css';
+import Overview from './overview/overview';
 
 const Container = styled.div`
   position: fixed;
@@ -42,7 +43,7 @@ const Tab = styled.div`
   position: relative;
   &:after {
     content: '';
-    border-bottom: ${p => p.active ? "5px solid green": "none"};
+    border-bottom: ${p => p.active ? "5px solid rgb(19, 146, 19)": "none"};
     width: ${p => p.active ? "50%": "0px"};
     margin: 0 auto;
     position: absolute;
@@ -52,6 +53,7 @@ const Tab = styled.div`
 `
 
 const FriendPanel = () => {
+
     const dispatch = useDispatch()
     const conversationUser = useSelector(state => state.currentConversation)
     const currentUser = useSelector(state => state.currentUser)
@@ -111,31 +113,46 @@ const FriendPanel = () => {
         }
     })
 
-    const nav = useSelector(state => state.friendPanel) 
+    const signout = () => {
+      dispatch(userLogout())
+      socket.disconnect();
+      localStorage.removeItem('token');
+    }
+
+    const close = () => {
+      dispatch(closeFriendPanel());
+    }
 
     return (
-        <Container open={open}>
-          <div className={styles.header}>
-            <i className="far fa-comment-dots"></i>
-          </div>
-          <div className={styles.nav}>
-            <Tab active={active===0} onClick={()=>setActive(0)}>
-              <i class="fas fa-home"></i>
-            </Tab>
-            <Tab active={active===1} onClick={()=>setActive(1)}>
-              <i class="far fa-comment"></i>
-            </Tab>
-            <Tab active={active===2} onClick={()=>setActive(2)}>
-              <i class="fas fa-plus"></i>
-            </Tab>
-          </div>
-          <div className={styles.content}>
-            <Content active={active}>
-              <Friendslist />
-              <Friendsadd />
-            </Content>  
-          </div>
-        </Container>
+      <Container open={open}>
+        <span className={styles.close} onClick={()=>close()}>
+          <i className="fas fa-times"></i>
+        </span>
+        <span className={styles.logout} onClick={()=>signout()}>
+          <i className="fas fa-power-off"></i>
+        </span>
+        <div className={styles.header}>
+          <i className="far fa-comment-dots"></i>
+        </div>
+        <div className={styles.nav}>
+          <Tab active={active===0} onClick={()=>setActive(0)}>
+            <i class="fas fa-home"></i>
+          </Tab>
+          <Tab active={active===1} onClick={()=>setActive(1)}>
+            <i class="far fa-comment"></i>
+          </Tab>
+          <Tab active={active===2} onClick={()=>setActive(2)}>
+            <i class="fas fa-plus"></i>
+          </Tab>
+        </div>
+        <div className={styles.content}>
+          <Content active={active}>
+            <Overview />
+            <Friendslist />
+            <Friendsadd />
+          </Content>  
+        </div>
+      </Container>
     )
 }
 

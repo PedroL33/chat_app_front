@@ -1,9 +1,11 @@
+/* Home panel */
+
 /* Open chat */
 
 .openContainer {
   position: fixed;
   bottom: 100px;
-  left: 100px;
+  right: 100px;
 }
 
 .open {
@@ -11,6 +13,16 @@
   height: 75px;
   border: none;
   border-radius: 50%;
+  box-shadow: 0 0 5px rgb(19, 146, 19);
+  background: rgb(19, 146, 19);
+  color: white;
+  font-size: 36px;
+  transition: all 300ms ease;
+}
+
+.open:hover {
+  color: rgb(19, 146, 19);
+  background: white;
 }
 
 /* Chat container */
@@ -28,14 +40,39 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: green;
+  color: rgb(19, 146, 19);
   font-size: 48px;
+  position: relative;
 }
 
 .content {
   flex: 1;
   position: relative;
   overflow: hidden;
+}
+
+.logout, .close {
+  position: absolute;
+  font-size: 24px;
+  color: black;
+  z-index: 1;
+  width: 30px;
+  text-align: center;
+}
+
+.logout {
+  top: 5px;
+  left: 10px;
+}
+
+.close {
+  top: 5px;
+  right: 10px;
+}
+
+.logout:hover, .close:hover {
+  color:red;
+  cursor: pointer;
 }
 
 /* friendList */
@@ -91,7 +128,7 @@
   padding: 5px 10px;
   border: 0;
   border-bottom: 1px solid black;
-  background: green;
+  background: rgb(19, 146, 19);
   color: white;
 }
 
@@ -102,10 +139,6 @@
 
 .message__icon {
   font-size: 36px;  
-}
-
-.message__msg {
-
 }
 
 .message__button {
@@ -122,10 +155,9 @@
 }
 
 .accept {
-  color: green;
+  color: rgb(19, 146, 19);
 }
 
 .decline {
   color: red;
 }
-
