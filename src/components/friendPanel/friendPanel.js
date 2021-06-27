@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Friendslist from './friendslist';
 import Friendsadd from './friendsadd';
 import { useSelector } from 'react-redux';
-import { setFriendData, setRequestData, setMessageData, setUnreadData, setIsTyping, setNotTyping, userLogout, closeFriendPanel } from '../../actions';
+import { setFriendData, setRequestData, setMessageData, setUnreadData, setIsTyping, setNotTyping, userLogout, closeFriendPanel, hideRequestMessage } from '../../actions';
 import { socket } from '../dashboard';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
@@ -12,13 +12,14 @@ import Overview from './overview/overview';
 const Container = styled.div`
   position: fixed;
   top: 0;
-  bottom: 0;
   right: ${p => p.open ? `0`: `-300px`};
   width: 300px;
+  height: 100%;
   background: white;
   transition: right 300ms ease;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 `
 
 const Content = styled.div`
@@ -38,7 +39,7 @@ const Tab = styled.div`
   justify-content: center;
   text-align: center;
   cursor: pointer;
-  font-size: ${p => p.active ? "24px": "16px"};
+  font-size: ${p => p.active ? "24px": "20px"};
   transition: all 300ms ease-in-out;
   position: relative;
   &:after {
@@ -121,6 +122,8 @@ const FriendPanel = () => {
 
     const close = () => {
       dispatch(closeFriendPanel());
+      setActive(0);
+      dispatch(hideRequestMessage());
     }
 
     return (

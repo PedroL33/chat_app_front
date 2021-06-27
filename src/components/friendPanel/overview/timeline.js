@@ -7,17 +7,11 @@ function Timeline() {
 
     const timelineEvents = useSelector(state => state.timelineEvents)
     const dispatch = useDispatch();
-    const didMountRef = useRef(null)
     const displayRef = useRef(null)
 
     useEffect(() => {
-        if(didMountRef.current) {
-          displayRef.current.scrollTop = displayRef.current.scrollHeight;
-        }
-        else {
-          didMountRef.current=true;
-        }
-      })
+      displayRef.current && displayRef.current.scrollIntoView({ behavior: 'smooth' });
+    })
 
     function handleClick(username) {
         dispatch(setConversation(username))
@@ -27,19 +21,20 @@ function Timeline() {
     return (
         <div className={styles.timeline}>
             <div className={styles.timeline__header}>Activity Log</div>
-            <div className={styles.timeline__content} ref={displayRef}>
+            <div className={styles.timeline__content}>
                 {timelineEvents.map(item => (
                     <div className={styles.timeline__event}>
-                        <em className={styles.timeline_link} onClick={()=> handleClick(item.username)}>
+                        <em className={styles.timeline__link} onClick={()=> handleClick(item.username)}>
                             {item.username}
                         </em>
-                        &nbsp;{item.message}&nbsp; 
+                        {item.message}&nbsp; 
                         <time className={styles.timeline__time}>
                             {item.time}
                         </time>
                     </div>
                     )
                 )}
+                <div ref={displayRef}></div>
             </div>
         </div>
     )

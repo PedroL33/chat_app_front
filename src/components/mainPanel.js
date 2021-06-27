@@ -5,9 +5,9 @@ import UpdateStatus from './friendPanel/overview/updateStatus';
 function MainPanel() {
 
     return (
-        <div className="row main-panel">
+        <div className="main-panel">
             <OpenFriendPanel />
-            <div id="content" className="content">
+            <div className="content">
                 <div>Chat App</div>
                 <UpdateStatus />
             </div>

@@ -19,7 +19,7 @@ const UpdateStatus = () => {
   }
 
   const checkClick = (e) => {
-    if(formRef && !formRef.current.contains(e.target)) {
+    if(formRef.current && !formRef.current.contains(e.target)) {
       setStatus("");
     }
   }
