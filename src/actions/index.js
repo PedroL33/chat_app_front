@@ -157,3 +157,24 @@ export const openFriendPanel = () => {
     type: "OPEN_FRIEND_PANEL"
   }
 }
+
+export const addConversation = (friend) => {
+  return {
+    type: "ADD_CONVO",
+    payload: friend
+  }
+}
+
+export const closeConversation = (friend) => {
+  return {
+    type: "CLOSE_CONVO",
+    payload: friend
+  }
+}
+
+export const bringToFront = (friend) => {
+  return {
+    type: "BRING_TO_FRONT",
+    payload: friend
+  }
+}

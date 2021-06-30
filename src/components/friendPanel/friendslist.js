@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setConversation, showConversation } from '../../actions';
+import { setConversation, addConversation } from '../../actions';
 import { CSSTransition, TransitionGroup} from 'react-transition-group';
 import { socket } from '../dashboard';
 import styles from '../../styles/friendPanel.module.css';
@@ -12,12 +12,12 @@ function Friendslist() {
     const unreadData = useSelector(state => state.unreadData)
     const currentConversation = useSelector(state => state.currentConversation)
     const show = useSelector(state => state.showConversation)
+    const conversations = useSelector(state => state.conversations)
 
     function handleClick(friend) {
         socket.emit('mark_read', friend)
         dispatch(setConversation(friend))
-        dispatch(showConversation())
-        document.getElementsByClassName('bm-overlay')[0].click();
+        dispatch(addConversation(friend))
     }
 
     return (          
@@ -43,7 +43,7 @@ function Friendslist() {
                 <TransitionGroup>
                     {friendData.offline && Object.keys(friendData.offline).map((friend) => (
                         <CSSTransition timeout={300} classNames="friend-list-item" key={friend}>
-                            <li className={currentConversation===friend && show ? "friend-list-item active" : "friend-list-item"} onClick={() => handleClick(friend)}
+                            <li className={conversations.includes(friend) ? "friend-list-item active" : "friend-list-item"} onClick={() => handleClick(friend)}
                              data-toggle="tooltip" data-placement="right" title={`${friend} is offline.`}>
                                 <div>{friend}</div>  
                                 {unreadData[friend] && <div className={styles.list__unread}>{unreadData[friend]}</div>}  

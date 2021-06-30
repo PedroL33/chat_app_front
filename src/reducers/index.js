@@ -13,6 +13,7 @@ import messageDataReducer from './messageData';
 import unreadDataReducer from './unreadData';
 import timelineEventsReducer from './timelineEvents';
 import openFriendPanel from './openFriendPanel';
+import conversations from './conversations';
 
 const appReducer = combineReducers({
     nav: navReducer,
@@ -28,7 +29,8 @@ const appReducer = combineReducers({
     messageData: messageDataReducer,
     unreadData: unreadDataReducer,
     timelineEvents: timelineEventsReducer,
-    openFriendPanel
+    openFriendPanel,
+    conversations
 })
 
 const rootReducer = (state, action) => {
