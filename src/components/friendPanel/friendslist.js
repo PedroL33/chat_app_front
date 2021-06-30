@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setConversation, addConversation } from '../../actions';
+import { addConversation } from '../../actions';
 import { CSSTransition, TransitionGroup} from 'react-transition-group';
 import { socket } from '../dashboard';
 import styles from '../../styles/friendPanel.module.css';
@@ -16,7 +16,6 @@ function Friendslist() {
 
     function handleClick(friend) {
         socket.emit('mark_read', friend)
-        dispatch(setConversation(friend))
         dispatch(addConversation(friend))
     }
 

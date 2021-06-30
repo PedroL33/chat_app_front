@@ -1,6 +1,6 @@
 import React, {useEffect, useRef} from'react';
 import {useSelector, useDispatch} from 'react-redux';
-import {setConversation, showConversation} from '../../../actions';
+import { addConversation } from '../../../actions';
 import styles from '../../../styles/overview.module.css';
 
 function Timeline() {
@@ -14,8 +14,7 @@ function Timeline() {
     })
 
     function handleClick(username) {
-        dispatch(setConversation(username))
-        dispatch(showConversation())
+        dispatch(addConversation(username))
     }
 
     return (

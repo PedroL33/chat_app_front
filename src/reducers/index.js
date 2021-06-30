@@ -4,9 +4,7 @@ import authReducer from '../reducers/authentication';
 import loginErrorReducer from '../reducers/loginErrors';
 import signupErrorsReducer from '../reducers/signupErrors';
 import friendDataReducer from './friendData';
-import currentConversationReducer from './currentConversation';
 import requestDataReducer from './requestData';
-import showConversationReducer from './showConversation';
 import requestMessageReducer from './requestMessage';
 import currentUserReducer from './currentUser';
 import messageDataReducer from './messageData';
@@ -21,9 +19,7 @@ const appReducer = combineReducers({
     loginErrors: loginErrorReducer,
     signupErrors: signupErrorsReducer,
     friendData: friendDataReducer,
-    currentConversation: currentConversationReducer,
     requestData: requestDataReducer,
-    showConversation: showConversationReducer,
     requestMessage: requestMessageReducer,
     currentUser: currentUserReducer,
     messageData: messageDataReducer,

@@ -29,35 +29,10 @@ export const setFriendData = (data) => {
     }
 }
 
-export const setConversation = (friend) => {
-    return {
-        type: "SET_CONVERSATION",
-        payload: friend
-    }
-}
-
-export const clearConversation = () => {
-    return {
-        type: "CLEAR_CONVERSATION"
-    }
-}
-
 export const setRequestData = (data) => {
     return {
         type: "SET_REQUEST_DATA",
         payload: data
-    }
-}
-
-export const showConversation = () => {
-    return {
-        type: "SHOW_CONVERSATION"
-    }
-}
-
-export const hideConversation = () => {
-    return {
-        type: "HIDE_CONVERSATION"
     }
 }
 
