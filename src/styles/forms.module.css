@@ -1,4 +1,4 @@
-.container {
+.form {
   margin: auto;
   width: 400px;
   border: 1px solid rgb(211, 211, 211);
@@ -10,20 +10,20 @@
   text-align: center;
 }
 
-.formLinks {
+.form__links {
   display: flex;
   position: absolute;
   bottom: 10px;
   right: 10px;
 }
 
-.formLink {
+.form__link {
   cursor: pointer;
   color: #3D9970;
   padding: 10px;
 }
 
-.formTitle {
+.form__title {
   position: absolute;
   font-size: 30px;
   top:20px;
@@ -54,14 +54,14 @@
   font-size: 12px;
 }
 
-.formLabel {
+.form__label {
   color: #3D9970;
   width: 100%;
   text-align: left;
   margin-bottom: 0px;
 }
 
-.submit {
+.form__submit {
   border: none;
   padding: 7px 21px;
   border-radius: 7px;
@@ -71,7 +71,7 @@
 }
 
 @media screen and (max-width: 1000px) {
-  .container {
+  .form {
     width: 90%;
   }
 }

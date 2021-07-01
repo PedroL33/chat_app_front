@@ -1,22 +1,25 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addConversation } from '../../actions';
+import { addConversation, closeFriendPanel, hideRequestMessage } from '../../actions';
 import { CSSTransition, TransitionGroup} from 'react-transition-group';
 import { socket } from '../dashboard';
 import styles from '../../styles/friendPanel.module.css';
 
-function Friendslist() {
+const Friendslist = () => {
 
-    const dispatch = useDispatch()
-    const friendData = useSelector(state => state.friendData)
-    const unreadData = useSelector(state => state.unreadData)
-    const currentConversation = useSelector(state => state.currentConversation)
-    const show = useSelector(state => state.showConversation)
-    const conversations = useSelector(state => state.conversations)
+    const dispatch = useDispatch();
+    const friendData = useSelector(state => state.friendData);
+    const unreadData = useSelector(state => state.unreadData);
+    const conversations = useSelector(state => state.conversations);
+    const isResponsive = useSelector(state => state.isResponsive);
 
     function handleClick(friend) {
-        socket.emit('mark_read', friend)
-        dispatch(addConversation(friend))
+        socket.emit('mark_read', friend);
+        dispatch(addConversation(friend));
+        if(isResponsive) {
+          dispatch(closeFriendPanel());
+          dispatch(hideRequestMessage())
+        }
     }
 
     return (          
@@ -26,7 +29,7 @@ function Friendslist() {
                 <TransitionGroup>
                     {friendData.online && Object.keys(friendData.online).map((friend) => (
                         <CSSTransition timeout={300} classNames="friend-list-item" key={friend}>
-                            <li className={currentConversation===friend && show ? "friend-list-item active" : "friend-list-item"} onClick={() => handleClick(friend)}
+                            <li className={conversations.includes(friend)  ? "friend-list-item active" : "friend-list-item"} onClick={() => handleClick(friend)}
                              data-toggle="tooltip" data-placement="right" title={`${friend} is ${friendData.online[friend].status}`}>
                                 <div>{friend}</div>
                                 {friendData.online[friend] && friendData.online[friend].isTyping ? <div>...</div>: null}

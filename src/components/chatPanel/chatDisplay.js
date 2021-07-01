@@ -61,9 +61,7 @@ const ChatDisplay = (props) => {
     return (
       <div className={styles.display}>
         <div>
-          <div className={`${styles.content__profileImg} ${isOnline ? styles.online: styles.offline}`} style={{backgroundImage: `url(${friendInfo.picture})`}} >
-            {/* <div className={`${styles.onlineStatus} ${isOnline ? styles.online: styles.offline}`}></div> */}
-          </div>
+          <div className={`${styles.content__profileImg} ${isOnline ? styles.online: styles.offline}`} style={{backgroundImage: `url(${friendInfo.picture})`}}></div>
         </div>
         <div className={styles.messagesWrapper}>
           <div ref={displayRef} className={styles.messages}>

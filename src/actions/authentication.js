@@ -33,7 +33,7 @@ export const login = (username, password) => {
         }
     })
     .catch(err => {
-        dispatch(setLoginErrors(err))
+        dispatch(setLoginErrors({error: "Server error."}))
     })
   }
 }

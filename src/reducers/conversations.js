@@ -14,6 +14,12 @@ const conversations = (state=[], action) => {
       convo = state.filter(item => item !== action.payload);
       convo.push(action.payload);
       return [...convo];
+    case "MAKE_RESPONSIVE":
+      if(state.length > 0) {
+        return [state[state.length-1]];
+      }else {
+        return [];
+      }
     default:
       return state;
   }

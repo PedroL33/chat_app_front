@@ -153,3 +153,21 @@ export const bringToFront = (friend) => {
     payload: friend
   }
 }
+
+export const makeResponsive = () => {
+  return {
+    type: "MAKE_RESPONSIVE"
+  }
+}
+
+export const isResponsive = () => {
+  return {
+    type: "IS_RESPONSIVE"
+  }
+}
+
+export const notResponsive = () => {
+  return {
+    type: "NOT_RESPONSIVE"
+  }
+}

@@ -23,16 +23,16 @@ function Login() {
     }
 
     return (
-        <div className={styles.container}>
-            <div className={styles.formTitle}>Login</div>
-            <div className={styles.formLinks}>
-              <div className={styles.formLink} onClick={e => handleClick(e, navInfo())}>About</div>
-              <div className={styles.formLink} onClick={e => handleClick(e, navSignup())}>Signup</div>
+        <div className={styles.form}>
+            <div className={styles.form__title}>Login</div>
+            <div className={styles.form__links}>
+              <div className={styles.form__link} onClick={e => handleClick(e, navInfo())}>About</div>
+              <div className={styles.form__link} onClick={e => handleClick(e, navSignup())}>Signup</div>
             </div>
-            <span className={styles.formError}>{errors['error'] && errors['error']}</span>
+            <span className={styles.form__error}>{errors['error'] && errors['error']}</span>
             <input className={errors.error ? `${styles.form__input} ${styles.form__error}`: styles.form__input} type="text" onChange={e => setUsername(e.target.value)} placeholder="Username"></input>
             <input className={errors.error ? `${styles.form__input} ${styles.form__error}`: styles.form__input} type="password" onChange={e => setPassword(e.target.value)} placeholder="Password"></input>
-            <button className={styles.submit} onClick={e => handleSubmit(e)}>Login</button>
+            <button className={styles.form__submit} onClick={e => handleSubmit(e)}>Login</button>
         </div>
     )
 }

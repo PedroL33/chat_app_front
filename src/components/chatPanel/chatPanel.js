@@ -2,21 +2,21 @@ import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import styles from '../../styles/chatPanel.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { closeConversation, bringToFront } from '../../actions';
+import { closeConversation, bringToFront, makeResponsive } from '../../actions';
 import ChatDisplay from './chatDisplay';
 
 const Container = styled.div.attrs(p => ({
   style: {
-    width: p.width < 300 ? "300px": `${p.width}px`, 
-    height: p.height < 400 ? "400px": `${p.height}px`,
-    top: `${p.top}px`,
-    left: `${p.left}px`,
+    width: p.isResponsive ? "100%": p.width < 300 ? "300px": `${p.width}px`, 
+    height: p.isResponsive ? "100%": p.height < 400 ? "400px": `${p.height}px`,
+    top: p.isResponsive ? "0px": `${p.top}px`,
+    left: p.isResponsive ? "0px": `${p.left}px`,
+    borderRadius: p.isResponsive ? "0px": "15px"
   }
 }))`
   background: green;
   position: absolute;
   transition: all 1ms ease;
-  border-radius: 15px;
   z-index: 1;
   box-shadow: 0 0 10px grey;
 `;
@@ -24,8 +24,8 @@ const Container = styled.div.attrs(p => ({
 const ChatPanel = (props) => {
 
   const dispatch = useDispatch(); 
-  const [top, setTop] = useState((window.innerHeight/2) - 100);
-  const [left, setLeft] = useState((window.innerWidth/2) - 100);
+  const [top, setTop] = useState((window.innerHeight/2) - 200);
+  const [left, setLeft] = useState((window.innerWidth/2) - 150);
   const [isDraggingHeader, setIsDraggingHeader] = useState(false);
   const [isDraggingResize, setIsDraggingResize] = useState(false);
   const [xOffset, setXOffset] = useState(0);
@@ -34,8 +34,7 @@ const ChatPanel = (props) => {
   const [height, setHeight] = useState(400);
   const headerRef = useRef(null);
   const resizeRef = useRef(null);
-
-  const friendData = useSelector(state => state.friendData);
+  const isResponsive = useSelector(state => state.isResponsive);
 
   useEffect(() => {
     window.addEventListener('mousemove', dragging);
@@ -46,6 +45,12 @@ const ChatPanel = (props) => {
       window.removeEventListener('mouseup', dragEnd);
     }
   })
+
+  useEffect(() => {
+    if(isResponsive) {
+      dispatch(makeResponsive())
+    }
+  }, [isResponsive])
 
   const dragStart = (e) => {
     setXOffset(e.screenX - e.currentTarget.getBoundingClientRect().left);
@@ -73,7 +78,7 @@ const ChatPanel = (props) => {
   }
 
   return (
-    <Container top={top} left={left} width={width} height={height}>
+    <Container top={top} left={left} width={width} height={height} isResponsive={isResponsive}>
       <div className={styles.content} onMouseDown={() => dispatch(bringToFront(props.friend))}>
         <div className={styles.content__header} onMouseDown={dragStart} ref={headerRef}> 
           <div className={styles.content__username}>{props.friend}</div>

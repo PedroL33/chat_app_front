@@ -25,9 +25,7 @@ body {
 
 .main-panel {
   width: 100%;
-  font-size: 100px;
-  
-  /* color: rgb(230, 230, 230); */
+  text-align: center;
 }
 
 .content {
@@ -36,18 +34,6 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
-  overflow: hidden;
-}
-
-.friend-panel-item {
-  background-color: rgb(240, 236, 236);
-  height: 100%;
-  width: 300px;
-  border: none;
-  display:flex;
-  flex-direction: column;
-  justify-content: space-around;
   position: relative;
 }
 
@@ -67,6 +53,7 @@ body {
   position: relative;
   transition: all 300ms ease;
   font-size: 16px;
+  transition: all 300ms ease;
 }
 
 .friend-list-item:hover {
@@ -74,97 +61,25 @@ body {
   background-color: rgb(209, 209, 209);
 }
 
-.friend-panel-item-enter, .conversation-enter, .friend-list-item-enter, .main-panel-item-enter {
+.friend-list-item-enter, .main-panel-item-enter {
   opacity: 0.01;
 }
 
-.friend-panel-item-enter-active, .conversation-enter-active, .friend-list-item-enter-active, .main-panel-item-enter-active {
+.friend-list-item-enter-active, .main-panel-item-enter-active {
   opacity: 1;
   transition: opacity 300ms ease-in;
 }
 
-.friend-panel-item-exit, .conversation-exit, .friend-list-item-exit, .main-panel-item-exit {
+.friend-list-item-exit, .main-panel-item-exit {
   opacity: 1;
 }
 
-.friend-panel-item-exit-active, .conversation-exit-active, .friend-list-item-exit-active, .main-panel-item-exit-active {
+.friend-list-item-exit-active, .main-panel-item-exit-active {
   opacity: 0.01;
   transition: opacity 300ms ease-out;
 }
 
-.conversation {
-  background-color: white;
-  padding: 20px;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  border-radius: 30px;
-  width: 500px;
-  height: 800px;
-  margin: auto;
-  z-index: 2;
-}
-
-.conversation-name {
-  margin-top: 5px;
-  font-size: 20px;
-  font-weight: 800;
-}
-
-.controls {
-  position: relative;
-  z-index: 2;
-}
-
-.close-button, .close-chat-button {
-  position: absolute;
-  font-size: 24px;
-}
-
-.close-chat-button {
-  top: 20px;
-  right: 20px;
-  font-size: 24px;
-}
-
-.close-button:hover, .close-chat-button:hover {
-  cursor: pointer;
-  color: red;
-}
-
-.responsive-input {
-  display:none;
-}
-
-
-input[type="file"] {
-  display: none;
-}
-
-
-.request-data-notification {
-  position: absolute;
-  width: 20px;
-  height:20px;
-  border-radius: 50%;
-  top: -10px;
-  right: -10px;
-}
-
-@media screen and (max-width: 1000px) {
-
-  .conversation {
-    width: 100%;
-    height: 100%;
-    border-radius: 0;
-  }
-
-  .chat-input {
-    display: none;
-  }
-
-  .chat-display-wrapper {
-    margin-bottom: 0;
-  }
+.modal-content {
+  overflow: hidden;
+  border-radius: 15px;
 }

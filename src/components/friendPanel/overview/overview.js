@@ -27,15 +27,15 @@ function Overview() {
                 <div className={styles.portrait} style={style}>
                     <div className={styles.portrait__controls}>
                         {file==="" ? 
-                        <label className={styles.portrait__fileUpload} data-toggle="tooltip" data-placement="top" title="Upload a Photo">
+                        <label className={styles.portrait__fileUpload}>
                             <input type="file" onChange={(e) => setFile(e.target.files[0])}></input>
                             <i className="fas fa-portrait"></i> 
                         </label>:
                         <div className={styles.portrait__buttons}>
-                            <button className={styles.portrait__button} onClick={() => savePhoto()} data-toggle="tooltip" data-placement="top" title="Save">
+                            <button className={styles.portrait__button} onClick={() => savePhoto()}>
                                 <i className="fas fa-check"></i>
                             </button> 
-                            <button className={styles.portrait__button} onClick={() => setFile("")} data-toggle="tooltip" data-placement="top" title="Clear">
+                            <button className={styles.portrait__button} onClick={() => setFile("")}>
                                 <i className="fas fa-times"></i>
                             </button>
                         </div>}
