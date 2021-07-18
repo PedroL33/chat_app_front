@@ -3,6 +3,7 @@ import OpenFriendPanel from './friendPanel/openFriendPanel';
 import UpdateStatus from './friendPanel/overview/updateStatus';
 import { useSelector, useDispatch } from 'react-redux';
 import ChatPanel from './chatPanel/chatPanel';
+import Notifications from './notifications';
 import { isResponsive, notResponsive } from '../actions';
 
 function MainPanel() {
@@ -35,6 +36,7 @@ function MainPanel() {
     return (
         <div className="main-panel">
             <OpenFriendPanel />
+            <Notifications />
             <div className="content">
                 <div style={{fontSize: "100px", opacity: "0.2", userSelect: "none"}}>Chat App</div>
                 <UpdateStatus />

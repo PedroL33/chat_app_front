@@ -13,6 +13,8 @@ import timelineEventsReducer from './timelineEvents';
 import openFriendPanel from './openFriendPanel';
 import conversations from './conversations';
 import isResponsive from './isResponsive';
+import notifications from './notifications';
+import isConnected from './isConnected';
 
 const appReducer = combineReducers({
     nav: navReducer,
@@ -28,7 +30,9 @@ const appReducer = combineReducers({
     timelineEvents: timelineEventsReducer,
     openFriendPanel,
     conversations,
-    isResponsive
+    isResponsive,
+    notifications,
+    isConnected
 })
 
 const rootReducer = (state, action) => {

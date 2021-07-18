@@ -171,3 +171,28 @@ export const notResponsive = () => {
     type: "NOT_RESPONSIVE"
   }
 }
+
+export const addNotification = (notification) => {
+  return {
+    type: "ADD_NOTIFICATION",
+    payload: notification
+  }
+}
+
+export const clearNotification = () => {
+  return {
+    type: "CLEAR_NOTIFICATION"
+  }
+}
+
+export const setIsConnected = () => {
+  return {
+    type: "SET_IS_CONNECTED"
+  }
+}
+
+export const setIsNotConnected = () => {
+  return {
+    type: "SET_IS_NOT_CONNECTED"
+  }
+}

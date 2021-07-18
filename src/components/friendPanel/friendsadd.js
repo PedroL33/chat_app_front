@@ -67,15 +67,15 @@ function Friendsadd() {
             <ul className={styles.list}>
                 <div className={styles.list__header}>Requests</div>
                 <TransitionGroup>
-                    {requestData && requestData.map((item) => (
-                        <CSSTransition timeout={300} classNames="friend-list-item" key={item._id}>
+                    {requestData && requestData.map((item, idx) => (
+                        <CSSTransition timeout={300} classNames="friend-list-item" key={idx}>
                             <li className="friend-list-item">
-                                <div className="mx-auto">{item.user.username}</div>   
+                                <div className="mx-auto">{item.username}</div>   
                                 <div>
-                                    <button className={styles.accept} onClick={() => socket.emit('accept_request', item.user.username, localStorage.getItem('token'))} data-toggle="tooltip" data-placement="top" title="Accept">
+                                    <button className={styles.accept} onClick={() => socket.emit('accept_request', item.username, localStorage.getItem('token'))}>
                                         <i className="fas fa-check"></i>
                                     </button> 
-                                    <button className={styles.decline} onClick={() => socket.emit('decline_request', item.user.username, localStorage.getItem('token'))} data-toggle="tooltip" data-placement="top" title="Decline">
+                                    <button className={styles.decline} onClick={() => socket.emit('decline_request', item.username, localStorage.getItem('token'))}>
                                       <i className="fas fa-times"></i>
                                     </button> 
                                 </div>
