@@ -13,7 +13,7 @@ export const setLoginErrors = (errors) => {
 
 export const login = (username, password) => {
   return (dispatch) => {
-    fetch('http://localhost:3000/login', {
+    fetch('https://intense-journey-99404.herokuapp.com/login', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -53,7 +53,7 @@ export const clearSignupErrors = () => {
 
 export const signup = (username, password, email) => {
   return async (dispatch) => {
-    const signup = await fetch('http://localhost:3000/signup', {
+    const signup = await fetch('https://intense-journey-99404.herokuapp.com/signup', {
         method: 'POST',
         headers: {
             "Content-Type": "application/json"

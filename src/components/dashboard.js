@@ -9,7 +9,7 @@ var socket;
 
 const Dashboard = () => {
 
-  socket = io.connect('http://localhost:3000', {
+  socket = io.connect('https://intense-journey-99404.herokuapp.com', {
     withCredentials: true,
     extraHeaders: {
       "my-custom-header": "abcd"
@@ -19,6 +19,7 @@ const Dashboard = () => {
   })
 
     const dispatch = useDispatch();
+    const isConnected = useSelector(state => state.isConnected);
     
     useEffect(() => {
         socket.on('connect', () => {
@@ -29,7 +30,9 @@ const Dashboard = () => {
             socket.emit('get_message_data', localStorage.getItem('token'))
         }) 
         socket.on('connect_error', () => {
-          dispatch(setIsNotConnected())
+          if(!isConnected) {
+            dispatch(setIsNotConnected());
+          }
         })
         socket.on('duplicate_auth', (error) => {
             socket.disconnect();
@@ -65,6 +68,7 @@ const Dashboard = () => {
             socket.off('timeline_update')
             socket.off('current_user_data')
             socket.off('connect_error')
+            socket.off('server-error')
         }
     }, [socket])
 
